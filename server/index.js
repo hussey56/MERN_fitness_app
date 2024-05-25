@@ -4,14 +4,20 @@ const router = require("./routes/index");
 const cookieParser = require("cookie-parser");
 const { PORT } = require("./config/config");
 const errorHandler = require("./middleware/errorHandler");
-const dbConnect = require('./database/db')
+const dbConnect = require('./database/db');
+
 const app = express();
 
-const CorsOptions = {
-  credentials: true,
-  origin: ["http://localhost:3000"],  
-};
-app.use(cors(CorsOptions));
+app.use(
+  cors({
+origin:function(origin,callback){
+return callback(null,true);
+},
+optionsSuccessStatus:200,
+credentials:true
+  })
+);
+
 app.use(cookieParser());
 app.use(express.json({ limit: "50mb" }));
 app.use(router);

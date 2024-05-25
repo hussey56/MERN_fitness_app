@@ -10,7 +10,7 @@ const UserController = {
   async signup(req, res, next) {
     const userRegisterSchema = Joi.object({
       username: Joi.string().min(5).max(30).required(),
-      name: Joi.string().max(30).required(),
+      fullname: Joi.string().max(30).required(),
       email: Joi.string().email().required(),
       password: Joi.string().pattern(passwordPattern).required(),
     });
@@ -18,7 +18,7 @@ const UserController = {
     if (error) {
       return next(error);
     }
-    const { name, email, username, password } = req.body;
+    const { fullname, email, username, password } = req.body;
     try {
       const emailinUse = await User.exists({ email });
       const usernameInUse = await User.exists({ username });
@@ -43,7 +43,7 @@ const UserController = {
       try {
         const userToRegister = new User({
           username,
-          name,
+          name:fullname,
           email,
           password: hashpassword,
           profileImage:""
