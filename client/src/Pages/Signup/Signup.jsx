@@ -16,18 +16,8 @@ const [loading,setLoading] =useState(false);
   const dispatch = useDispatch();
   const [error, setError] = useState("");
 
-  const { values, handleBlur, handleChange, touched, errors } = useFormik({
-    initialValues: {
-      fullname: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-    validationSchema: SignupSchema,
-  });
 
-  const HandleSignUp = async()=>{
+  const handleSignUp = async()=>{
     setLoading(true)
     const data = {
         fullname:values.fullname,
@@ -36,6 +26,7 @@ const [loading,setLoading] =useState(false);
         password:values.password,
     }
        const response = await signup(data);
+
        if(response.status === 201){
           // 1. set user
     const user ={
@@ -48,11 +39,22 @@ const [loading,setLoading] =useState(false);
       dispatch(setUser(user));
         // 2. redirect 
         navigate('/');
-       }  else if(response.code === 'ERR_BAD_REQUEST'){
-        setError(response.response.data.message)
+       }  else if(response.status === 200){
+        setError(response.data)
          }
     setLoading(false);
         }
+        
+  const { values, handleBlur, handleChange, touched, errors } = useFormik({
+    initialValues: {
+      fullname: "Hassan",
+      username: "HSkhan",
+      email: "hassankhan032370@gmail.com",
+      password: "Password123",
+      confirmPassword: "Password123",
+    },
+    validationSchema: SignupSchema,
+  });
   return (
     <div className={`d-lg-flex half`}>
       <div className={`bg order-1 order-md-2 loginimg`}></div>
@@ -63,7 +65,6 @@ const [loading,setLoading] =useState(false);
               <h3>
                 Register to <strong>FTracker 📋🏋️‍♀️</strong>
               </h3>
-              <form action="#" method="post">
                 <TextInput
                   inputname="Full Name"
                   className="form-control"
@@ -138,7 +139,7 @@ const [loading,setLoading] =useState(false);
                   <div className="d-grid gap-2 mb-2 mt-4">
                   <button
                     className="btn btn-primary btn-lg"
-                    onClick={HandleSignUp}
+                    onClick={handleSignUp}
                     disabled={
                       !values.fullname ||
                       !values.email ||
@@ -164,7 +165,6 @@ const [loading,setLoading] =useState(false);
                 <p>Processing....</p>
                 </>}
                
-              </form>
             </div>
           </div>
         </div>

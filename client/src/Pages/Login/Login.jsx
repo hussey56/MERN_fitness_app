@@ -33,9 +33,12 @@ const Login = () => {
       dispatch(setUser(user));
       // 2. redirect
       navigate("/");
-    } else if (response.code === "ERR_BAD_REQUEST") {
-      setError(response.response.data.message);
+    } else if (response.response.status === 401) {
+      // setError(response.response.data.message);
+  setError("Invalid Credentials");
     }
+    // console.log(response.response);
+
     setLoading(false)
   };
 
@@ -61,7 +64,6 @@ const Login = () => {
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Inventore doloribus, assumenda provident .
               </p>
-              <form action="#" method="post">
                 <TextInput
                   inputname="Username"
                   className="form-control"
@@ -114,7 +116,6 @@ const Login = () => {
                 {loading && <>
                 <p>Processing....</p>
                 </>}
-              </form>
             </div>
           </div>
         </div>

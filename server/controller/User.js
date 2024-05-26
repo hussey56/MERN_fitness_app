@@ -24,17 +24,17 @@ const UserController = {
       const usernameInUse = await User.exists({ username });
       if (emailinUse) {
         const error = {
-          status: 409,
-          message: "Email Already in use Please use another email",
+          status: 200,
+          message: "Email already in use please use another email",
         };
-        return next(error);
+        return res.status(error.status).json(error.message);
       }
       if (usernameInUse) {
         const error = {
-          status: 409,
-          message: "Username Already in use Please use another username",
+          status: 200,
+          message: "Username already in use please use another username",
         };
-        return next(error);
+        return res.status(error.status).json(error.message);
       }
       const hashpassword = await bcrypt.hash(password, 10);
       let accessToken;
@@ -77,7 +77,7 @@ const UserController = {
   async login(req,res,next){
     const userLoginSchema = Joi.object({
         username:Joi.string().min(5).max(30).required(),
-        password:Joi.string().pattern(passwordPattern).required(),
+        password:Joi.string().required(),
     });
     const{ error }= userLoginSchema.validate(req.body);
     if(error){

@@ -48,7 +48,7 @@ api.interceptors.response.use(
         if((error.response.status === 401 || error.response.status === 500) && originalRequest && !originalRequest.isRetry){
             originalRequest.isRetry = true;
             try {
-                await axios.get(`${process.env.REACT_APP_INTERNAL_API_PATH}/refresh`,{
+                await axios.get(`${process.env.REACT_APP_BACKEND_PATH}/refresh`,{
                     withCredentials:true
                 });
                 return api.request(originalRequest);
