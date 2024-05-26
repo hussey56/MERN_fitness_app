@@ -1,0 +1,53 @@
+.mycard{
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.card-icon{
+    padding: 20px;
+    color: white;
+    font-size: 34px;
+    border-radius: 20px;
+margin: 10px;
+}
+.card-icon:hover{
+    transition: 0.5s ease-in-out;
+    transform: scale(1.1);
+}
+.card-title{
+    margin: 5px;
+font-size: 32px;
+color: black;
+text-transform: uppercase;
+font-weight: bold;
+}
+.card-title h2{
+    position: relative;
+}
+.card-title h2:hover::after{
+    content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(13, 13, 60);
+  transition: 0.3s all ease-in-out;
+}
+
+@media screen and (max-width:990px) {
+    .card-title h2{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width:762px) {
+    .card-title h2{
+        font-size: 28px;
+    }
+}

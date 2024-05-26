@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import SignupSchema from "../../Schema/SignupSchema";
@@ -7,8 +7,10 @@ import TextInput from "../../Components/TextInput/TextInput";
 import PasswordInput from "../../Components/TextInput/PasswordInput";
 import { signup } from '../../Api/internal'
 import {setUser} from '../../Store/UserSlice';
+import Loader from '../../Components/Loader/Loader'
 
-const Signup = () => {
+const Signup = ({isAuth}) => {
+  
   const [passwordvisible, setPasswordVisible] = useState(false);
   const [cpasswordvisible, setcPasswordVisible] = useState(false);
 const [loading,setLoading] =useState(false);
@@ -55,6 +57,13 @@ const [loading,setLoading] =useState(false);
     },
     validationSchema: SignupSchema,
   });
+  useEffect(()=>{
+    if(isAuth){
+      navigate('/');
+    }
+  },
+  // eslint-disable-next-line
+  [])
   return (
     <div className={`d-lg-flex half`}>
       <div className={`bg order-1 order-md-2 loginimg`}></div>
@@ -62,9 +71,7 @@ const [loading,setLoading] =useState(false);
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-md-7">
-              <h3>
-                Register to <strong>FTracker 📋🏋️‍♀️</strong>
-              </h3>
+            <h3 className='text-dark' style={{fontFamily:'monospace'}}>Register to <span className='text-primary' style={{fontFamily:'cursive',fontWeight:'bold'}}>F</span>Tracker  📋🏋️‍♀️</h3>
                 <TextInput
                   inputname="Full Name"
                   className="form-control"
@@ -158,11 +165,11 @@ const [loading,setLoading] =useState(false);
                 </div>
 
                 <p className="link-text">
-                  Already Have an Account? <NavLink to={"/"}>Sign in .</NavLink>
+                  Already Have an Account? <NavLink to={"/login"}>Sign in .</NavLink>
                 </p>
                 </>}
                 {loading && <>
-                <p>Processing....</p>
+                <Loader text={'Registering ...'} size={60}/>
                 </>}
                
             </div>

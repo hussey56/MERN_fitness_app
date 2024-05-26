@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import PasswordInput from "../../Components/TextInput/PasswordInput";
@@ -8,13 +8,13 @@ import { login } from "../../Api/internal";
 import TextInput from "../../Components/TextInput/TextInput";
 import { useFormik } from "formik";
 import { setUser } from "../../Store/UserSlice";
-const Login = () => {
+import Loader from '../../Components/Loader/Loader'
+const Login = ({isAuth}) => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading,setLoading] =useState(false);
 
-  //api call for login
   const handleLogin = async () => {
     setLoading(true)
     const data = {
@@ -50,16 +50,24 @@ const Login = () => {
     },
     validationSchema: LoginSchema,
   });
+  useEffect(()=>{
+    if(isAuth){
+      navigate('/');
+    }
+  },
+  // eslint-disable-next-line
+  [])
   return (
     <div className={`d-lg-flex half`}>
       <div className={`bg order-1 order-md-2 loginimg`}></div>
       <div className={`contents order-2 order-md-1`}>
         <div className="container">
           <div className="row align-items-center justify-content-center">
-            <div className="col-md-7">
-              <h3>
-                Welcome to <strong>FTracker 📋🏋️‍♀️</strong>
-              </h3>
+            <div className="col-md-8">
+             
+       <h2 className='text-dark' style={{fontFamily:'monospace'}}>Welcome to <span className='text-primary' style={{fontFamily:'cursive',fontWeight:'bold'}}>F</span>Tracker  📋🏋️‍♀️</h2>
+        
+              
               <p className="mb-4">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Inventore doloribus, assumenda provident .
@@ -114,7 +122,7 @@ const Login = () => {
                 </>
 }
                 {loading && <>
-                <p>Processing....</p>
+                <Loader text={'Signing ...'} size={60} />
                 </>}
             </div>
           </div>
