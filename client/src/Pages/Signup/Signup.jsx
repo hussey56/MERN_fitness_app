@@ -49,9 +49,9 @@ const [loading,setLoading] =useState(false);
         
   const { values, handleBlur, handleChange, touched, errors } = useFormik({
     initialValues: {
-      fullname: "Hassan",
-      username: "HSkhan",
-      email: "hassankhan032370@gmail.com",
+      fullname: "",
+      username: "",
+      email: "",
       password: "Password123",
       confirmPassword: "Password123",
     },

@@ -8,6 +8,7 @@ import Loader from "./Components/Loader/Loader";
 import Layout from "./Components/Layout/Layout";
 import Workout from "./Pages/Workout/Workout";
 import MyDiet from "./Pages/MyDiet/MyDiet"
+import './App.css'
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
   const loading = useAutoLogin();
