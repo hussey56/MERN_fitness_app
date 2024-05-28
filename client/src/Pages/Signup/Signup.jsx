@@ -83,6 +83,8 @@ const [loading,setLoading] =useState(false);
                   placeholder="Enter your full name"
                   error={errors.fullname && touched.fullname ? 1 : undefined}
                   errormessage={errors.fullname}
+                  label={true}
+
                 />
 
                 <TextInput
@@ -96,6 +98,8 @@ const [loading,setLoading] =useState(false);
                   placeholder="Enter username"
                   error={errors.username && touched.username ? 1 : undefined}
                   errormessage={errors.username}
+                  label={true}
+
                 />
                 <TextInput
                   inputname="Email"
@@ -108,6 +112,8 @@ const [loading,setLoading] =useState(false);
                   placeholder="Enter your email"
                   error={errors.email && touched.email ? 1 : undefined}
                   errormessage={errors.email}
+                  label={true}
+
                 />
                 <PasswordInput
                   inputname="Password"

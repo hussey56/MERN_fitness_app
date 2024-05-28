@@ -83,6 +83,7 @@ const Login = ({isAuth}) => {
                   placeholder="Enter username"
                   error={errors.username && touched.username ? 1 : undefined}
                   errormessage={errors.username}
+                  label={true}
                 />
                 <PasswordInput
                   inputname="Password"

@@ -9,6 +9,7 @@ import Layout from "./Components/Layout/Layout";
 import Workout from "./Pages/Workout/Workout";
 import MyDiet from "./Pages/MyDiet/MyDiet"
 import './App.css'
+import AddWorkout from "./Pages/Workout/AddWorkout/AddWorkout";
 function App() {
   const isAuth = useSelector((state) => state.user.auth);
   const loading = useAutoLogin();
@@ -34,7 +35,8 @@ function App() {
             exact
             element={
                 <Layout isAuth={isAuth}>
-                  <Workout/>
+                                    <Workout/>
+
                 </Layout>
               
             }
@@ -45,6 +47,16 @@ function App() {
             element={
                 <Layout isAuth={isAuth}>
                   <MyDiet/>
+                </Layout>
+              
+            }
+          />
+            <Route
+            path="/addworkout"
+            exact
+            element={
+                <Layout isAuth={isAuth}>
+                  <AddWorkout/>
                 </Layout>
               
             }

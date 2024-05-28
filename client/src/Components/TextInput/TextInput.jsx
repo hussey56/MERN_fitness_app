@@ -4,7 +4,7 @@ const TextInput = (props) => {
   return (
     <>
     <div className={`form-group`}>
-                  <label htmlFor={props.name}>{props.inputname}</label>
+                 {props.label == true &&<label htmlFor={props.name}>{props.inputname}</label>}
                   <input
                      {...props}
                   />

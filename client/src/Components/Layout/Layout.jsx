@@ -9,7 +9,7 @@ const Layout = ({ isAuth, children }) => {
       <>
         <Navbar />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   } else {
