@@ -1,9 +1,11 @@
 import React from 'react'
+import AddWorkout from './Component/AddWorkout'
 const Workout = () => {
   return (
     <div>
-      <h2>Workout</h2> 
-
+<div className="container">
+  <AddWorkout/>
+</div>
     </div>
   )
 }
