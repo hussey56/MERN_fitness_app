@@ -69,3 +69,29 @@ text-transform: capitalize;
     align-items: center;
     margin: 0 auto;
 }
+.sort-by{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 10px;
+}
+.sort-by h2{
+    font-size: 22px;
+    font-weight: 400;
+}
+.sort-by select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 140px;
+    padding: 7px 10px;
+    outline: none;
+    border-radius: 10px;
+    height: 40px;
+    font-size: auto;
+}
+.sort-by select option{
+    text-align: start !important;
+    border: none;
+    font-size: 18px !important;
+
+}

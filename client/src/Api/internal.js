@@ -17,10 +17,28 @@ export const getworkouts = async(userId)=>{
     }
     return response;
 }
+export const getdiets = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/userdiets/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const searchworkouts = async(data)=>{
     let response ;
     try {
         response = await api.post(`/searchworkout`,data);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const searchdiet = async(data)=>{
+    let response ;
+    try {
+        response = await api.post(`/searchdiet`,data);
     } catch (error) {
         return error;
     }

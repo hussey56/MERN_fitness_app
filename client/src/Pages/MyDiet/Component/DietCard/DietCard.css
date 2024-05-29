@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
+
+
+.margin-right-md {
+  margin-bottom: 2.8rem !important;
+}
+
+strong {
+  font-weight: 500;
+}
+
+
+.dietcard {
+  font-family: "Rubik", sans-serif;
+  line-height: .8;
+  font-weight: 400;
+  color: #555;
+  height: auto;
+}
+.empty-diet-card {
+  width: 100%;
+  height: 330px;
+  border: 1px solid rgba(0, 0, 0, 0.464);
+  border-radius: 30px;
+  background: white;
+  padding: 2.5rem;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.empty-diet-card i {
+  font-size: 90px;
+  margin-bottom: 20px;
+}
+.empty-diet-card p {
+  font-size: 50px;
+}
+.empty-diet-card:hover{
+  color: black;
+}
+.meal {
+  width: 100%;
+  height: auto;
+  background: #ffffffab;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.022); 
+   border-radius: 13px;  
+  overflow: hidden;
+  transition: all 0.4s;
+  border: 2px solid rgba(0, 0, 0, 0.277) ;
+}
+
+.meal:hover {
+  transform: translateY(-1.2rem);
+  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.016);
+}
+
+.meal-content {
+    padding: 1rem 2rem;
+}
+
+.meal-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tag {
+  display: flex;
+  padding: 0.4rem 0.8rem;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #51cf66;
+  color: white;
+  border-radius: 100px;
+  font-weight: 600;
+  height: 40px;
+  align-items: center;
+}
+.tag--breakfast {
+    background-color: #51cf66;
+  }
+.tag--preworkout {
+  background-color: #51cf66;
+}
+.tag--postworkout {
+    background-color: #51cf66;
+  }
+
+.tag--lunch {
+  background-color: #94d82d;
+}
+
+.tag--dinner {
+  background-color: #ffd43b;
+}
+#view-icon{
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: rgb(29, 118, 251);
+}
+#view-icon:hover{
+    transition: 0.3s ease-in-out;
+    transform: scale(1.2);
+}
+.meal-title {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 2.2rem;
+}
+
+.meal-attributes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 0;
+}
+
+.meal-attribute {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.meal-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: #e67e22;
+}
+.main-icon{
+    height: 3.4rem;
+    width: 3.4rem;
+    color: #e67e22;  
+}
+
+.meal-img {
+    padding: 10px;
+  width: 100%;
+  height: 100.15px;
+  object-fit: cover;
+}

@@ -6,7 +6,7 @@ const WCard = ({workout}) => {
   return (
     <>
  
- <div class="col-md-4">
+ <div class="col-md-4 col-xs-12">
 <div class="dcard my-2 mx-2">
   
   <span class="description"><i class="fa-solid fa-dumbbell"></i>  {workout.category}</span>
