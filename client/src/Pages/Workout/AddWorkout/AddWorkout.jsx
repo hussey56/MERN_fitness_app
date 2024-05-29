@@ -3,9 +3,13 @@ import WorkoutSchema from "../../../Schema/WorkoutSchema";
 import { useFormik } from "formik";
 import TextInput from "../../../Components/TextInput/TextInput";
 import { createworkout } from "../../../Api/internal";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { switchAlert } from "../../../Store/WorkoutSlice";
+import { MyAlert } from "../../../Hooks/useAlert";
 
 const AddWorkout = () => {
+  const dispatch = useDispatch();
+
   const [loading,setLoading] = useState(false);
   const isAuth = useSelector((state) => state.user);
   const [tg, setTg] = useState("");
@@ -92,9 +96,20 @@ const AddWorkout = () => {
         weight: 10,
         notes: "",
       });
-      alert("Workout Created");
+      
+      dispatch(switchAlert(true));
+      MyAlert({type:"success",message:{title:"Congrats",text:"Workout created successfully!"
+      }})
+      }else{
+        dispatch(switchAlert(true));
+        MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
+        }})
       }
+     
     } catch (error) {
+      dispatch(switchAlert(true));
+      MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
+      }})
       console.error('Error creating workout:', error);
     }
     setLoading(false);

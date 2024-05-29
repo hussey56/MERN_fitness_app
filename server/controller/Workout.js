@@ -59,7 +59,7 @@ return res.status(200).json({workouts})
       $or: [
         { name: { $regex: new RegExp(searchString, 'i') } }, // Case-insensitive search on name
         { category: { $regex: new RegExp(searchString, 'i') } }, // Case-insensitive search on category
-        { tags: { $in: [searchString] } }, // Search tags for exact match
+        { tags: { $regex: new RegExp(searchString, 'i') } }, // Search tags for exact match
       ],
     };
 

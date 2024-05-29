@@ -9,6 +9,8 @@ import TextInput from "../../Components/TextInput/TextInput";
 import { useFormik } from "formik";
 import { setUser } from "../../Store/UserSlice";
 import Loader from '../../Components/Loader/Loader'
+import { switchAlert } from "../../Store/WorkoutSlice";
+import { MyAlert } from "../../Hooks/useAlert";
 const Login = ({isAuth}) => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -31,10 +33,12 @@ const Login = ({isAuth}) => {
         auth: response.data.auth,
       };
       dispatch(setUser(user));
+
       // 2. redirect
       navigate("/");
     } else if (response.response.status === 401) {
       // setError(response.response.data.message);
+
   setError("Invalid Credentials");
     }
     // console.log(response.response);

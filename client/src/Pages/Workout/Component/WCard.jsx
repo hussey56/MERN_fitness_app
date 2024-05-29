@@ -7,7 +7,7 @@ const WCard = ({workout}) => {
     <>
  
  <div class="col-md-4">
-<div class="card my-1 mx-1">
+<div class="dcard my-2 mx-2">
   
   <span class="description"><i class="fa-solid fa-dumbbell"></i>  {workout.category}</span>
   <h3 class="blog-title mt-1">{workout.name}</h3>

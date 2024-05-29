@@ -10,7 +10,11 @@ import Workout from "./Pages/Workout/Workout";
 import MyDiet from "./Pages/MyDiet/MyDiet"
 import './App.css'
 import AddWorkout from "./Pages/Workout/AddWorkout/AddWorkout";
+import { NotificationContainer } from "react-notifications";
 function App() {
+  
+  const showNotification = useSelector((state)=>state.workout.showalert);
+
   const isAuth = useSelector((state) => state.user.auth);
   const loading = useAutoLogin();
 
@@ -78,6 +82,7 @@ function App() {
             }
           />
         </Routes>
+
       </BrowserRouter>
     </>
   );
