@@ -70,6 +70,7 @@ const NutritionController = {
   async searchDiet(req, res, next) {
     const searchString = req.body.searchString;
     const sortValue = req.body.sortValue;
+    const userId = req.body.userId;
     let sortOption;
     if (sortValue == null) {
       sortOption = {
@@ -92,6 +93,7 @@ const NutritionController = {
     let results;
     try {
       const searchQuery = {
+        userId,
         $or: [
           { name: { $regex: new RegExp(searchString, "i") } }, // Case-insensitive search on name
           { mealType: { $regex: new RegExp(searchString, "i") } }, // Case-insensitive search on category

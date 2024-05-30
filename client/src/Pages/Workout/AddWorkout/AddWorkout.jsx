@@ -6,7 +6,7 @@ import { createworkout } from "../../../Api/internal";
 import { useSelector,useDispatch } from "react-redux";
 import { switchAlert } from "../../../Store/WorkoutSlice";
 import { MyAlert } from "../../../Hooks/useAlert";
-
+import Loader from '../../../Components/Loader/Loader'
 const AddWorkout = () => {
   const dispatch = useDispatch();
 
@@ -114,9 +114,11 @@ const AddWorkout = () => {
     }
     setLoading(false);
   };
- 
+ if(loading){
+  return <Loader text="Adding Workout ..."/>
+ }
   return (
-    <div className="container">
+ <div className="container">
 <div className="row ">
       <div className="col-md-6 py-2">
         <h2 id="createworkoutheading">Create Your Workout</h2>
@@ -162,14 +164,14 @@ const AddWorkout = () => {
             +
           </span>
         </div>{" "}
-        {loading == false &&<button
+        <button
           type="submit"
           className=" mt-3 btn btn-lg btn-primary"
           onClick={handleSubmit}
           disabled={!values.name  || errors.name || category.length==0 || tags.length==0 || exercises.length==0}
         >
           Add Workout
-        </button>}
+        </button>
       </div>
 
       <div className="col-md-6 addexercise">
@@ -222,10 +224,10 @@ const AddWorkout = () => {
             value={newExercise.notes}
             onChange={handleInputChange}
           />
-          {loading==false && 
+         
           <button type="submit" className="mt-3 float-end btn btn-primary">
             Add
-          </button>}
+          </button>
         </form>
       </div>
 

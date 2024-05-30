@@ -1,0 +1,80 @@
+.singleworkout{
+    text-align: center;
+    /* border: 2px solid black; */
+    padding: 20px 30px; 
+    overflow: hidden; 
+}
+
+
+.singleworkout span{
+    font-size: 34px;
+    color: #04030bd3;
+    font-weight: 400;
+    border: 2px solid rgba(0, 0, 0, 0.318);
+    padding: 10px 9px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease-in-out;
+}
+.singleworkout span:hover{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); 
+}
+
+.singleworkout span i{
+    color: rgb(17, 222, 222);
+}
+
+.tagscard{
+    text-align: center;
+}
+.swcontainer{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.swcontainer h2{
+    font-size: 40px;
+    font-weight: 500;
+    color: rgba(54, 21, 21, 0.803);
+}
+.swcontainer h2 span{
+   color: rgba(54, 21, 21, 0.99);
+   font-weight: 600;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.swcard{
+    width: 100%;
+    height: auto;
+    border-radius: 29px;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.414);
+   }
+   .swcard-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: cursive;
+   }
+   .swcard-body{
+    padding: 10px 20px;
+   }
+   .swcard-body p{
+    font-size: 24px;
+   }
+   #swtext{
+    font-size: 18px;
+   }
+@media screen and (max-width:762px) {
+    .singleworkout span{
+        font-size: 20px;
+    }
+    .swcontainer{
+        padding: 10px;
+        flex-direction: column;
+    }
+    .swcontainer h2{
+        font-size: 24px;
+    }
+}

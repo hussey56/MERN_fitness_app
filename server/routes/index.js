@@ -26,18 +26,18 @@ Router.post("/createworkout",auth,WorkoutController.createWorkout);
 Router.get("/userworkouts/:userId",auth,WorkoutController.userWorkouts);
 
 // search workouts
-Router.post("/searchworkout",WorkoutController.searchWorkout);
-
-
+Router.post("/searchworkout",auth,WorkoutController.searchWorkout);
+// delete workout
+Router.post("/deleteworkout",auth,WorkoutController.deleteWorkout);
 // Create Diet Plan
-Router.post("/creatediet",NutritionController.create);
+Router.post("/creatediet",auth,NutritionController.create);
 
 // User Diets
 Router.get("/userdiets/:userId",auth,NutritionController.getuserdiets);
 
 // Searching over diets
-Router.post("/searchdiet",NutritionController.searchDiet);
+Router.post("/searchdiet",auth,NutritionController.searchDiet);
 
 
-
+ 
 module.exports = Router 

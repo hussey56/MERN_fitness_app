@@ -1,8 +1,12 @@
 import React from 'react'
 import './WCard.css'
 import {BiRightArrowAlt} from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 const WCard = ({workout}) => {
-    
+  const header = useNavigate();
+  const gotoWorkout = ()=>{
+    header('/singleworkout',{state:{data:workout}});
+  }
   return (
     <>
  
@@ -19,7 +23,7 @@ const WCard = ({workout}) => {
 ))}
   </div>
 <div className="fluid-container">
-  <div className="text-primary float-end">View <BiRightArrowAlt style={{fontSize:'20px'}}/></div>
+  <div className="text-primary float-end" style={{cursor:'pointer'}} onClick={gotoWorkout}>View <BiRightArrowAlt style={{fontSize:'20px'}}/></div>
 </div>
 
 </div> 

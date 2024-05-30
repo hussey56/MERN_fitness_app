@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_BACKEND_PATH,
@@ -76,6 +75,26 @@ export const createworkout = async(data)=>{
     let response;
     try {
         response = await api.post('/createworkout',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const deleteworkout = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/deleteworkout',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const creatediet = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/creatediet',data)
 
     } catch (error) {
         return error;

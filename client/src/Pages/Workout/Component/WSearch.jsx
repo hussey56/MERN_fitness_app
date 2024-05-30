@@ -13,7 +13,8 @@ const dispatch = useDispatch();
     const [search,setSearch] = useState("");
     const handleSearch = async()=>{
         const data ={
-            searchString:search
+            searchString:search,
+            userId
         }
         const response = await searchworkouts(data);
         if(response.status === 200){

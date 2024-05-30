@@ -1,7 +1,12 @@
 import React from 'react'
 import './DietCard.css'
 import {BiFoodTag} from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 const DietCard = ({diet}) => {
+  const header = useNavigate();
+  const gotoDiet = (data)=>{
+    header('/singlediet',{state:{singlediet:diet}});
+  }
   return (
     <>
    
@@ -12,7 +17,7 @@ const DietCard = ({diet}) => {
         <div class="meal-content">
           <div class="meal-tag">
             <span class="tag tag--vegetarian">{diet.mealType}</span>
-            <ion-icon id="view-icon"  name="eye"></ion-icon>
+            <ion-icon id="view-icon" onClick={gotoDiet}  name="eye"></ion-icon>
 
           </div>
 

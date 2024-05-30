@@ -13,12 +13,10 @@ export const  MyAlert =({type,message})=>{
           NotificationManager.warning(message.text, message.title, 3000);
           break;
         case 'error':
-          NotificationManager.error(message.text, message.title, 3000, () => {
-            alert('callback');
-          });
+          NotificationManager.error(message.text, message.title, 3000);
           break;
           default:
-              NotificationManager.error('Error message', 'Click me!', 5000, () => {
+              NotificationManager.error('Error message', 'Click me!', 1000, () => {
                   alert('callback');
                 });
                 break;

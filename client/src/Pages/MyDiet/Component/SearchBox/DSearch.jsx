@@ -6,6 +6,7 @@ import { searchdiet } from "../../../../Api/internal";
 
 const DSearch = () => {
   const diets = useSelector((state) => state.diet.diets);
+  const userId = useSelector((state)=>state.user._id);
 
   const dispatch = useDispatch();
 
@@ -17,6 +18,7 @@ const DSearch = () => {
     const data = {
       searchString: search,
       sortValue: e.target.value,
+      userId
     };
     const response = await searchdiet(data);
     if (response.status === 200) {
@@ -30,6 +32,7 @@ const DSearch = () => {
     const data = {
       searchString: search,
       sortValue: sorts,
+      userId
     };
     const response = await searchdiet(data);
     if (response.status === 200) {
