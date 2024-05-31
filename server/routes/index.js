@@ -35,6 +35,9 @@ Router.post("/creatediet",auth,NutritionController.create);
 // User Diets
 Router.get("/userdiets/:userId",auth,NutritionController.getuserdiets);
 
+// Delete a diet
+Router.post('/deletediet',auth,NutritionController.deleteDiet);
+
 // Searching over diets
 Router.post("/searchdiet",auth,NutritionController.searchDiet);
 

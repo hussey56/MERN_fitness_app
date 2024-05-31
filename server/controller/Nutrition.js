@@ -106,6 +106,38 @@ const NutritionController = {
     }
     return res.status(200).json({ results });
   },
+  async deleteDiet(req,res,next){
+    const DeleteSchema = Joi.object({
+      userId:Joi.string().regex(MongoDbPattern).required(),
+      deleteId:Joi.string().regex(MongoDbPattern).required(),
+      });
+      const { error } = DeleteSchema.validate(req.body);
+      if (error) {
+        return next(error);
+      }
+      const {userId,deleteId} = req.body
+      let diet;
+      try {
+        diet = await Nutrition.findOne({_id:deleteId,userId})
+    } catch (error) {
+        return next(error);
+    }
+    if(diet){
+      try{
+        await Nutrition.deleteOne({_id:deleteId,userId});
+
+  
+      }catch(error){
+        return next(error);
+      }
+      return res.status(200).json({message:'Diet Deleted'});
+
+    }else{
+      return res.status(200).json({message:'Diet Not Found'});
+
+    }
+
+  }
 };
 
 module.exports = NutritionController;

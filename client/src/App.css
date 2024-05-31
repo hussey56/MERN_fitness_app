@@ -15,6 +15,12 @@ background-color: rgba(7, 0, 0, 0.978);
     color: antiquewhite;
     font-family: 900 !important;
 }
+.dwtitle{
+    font-size: 38px;
+    padding:  5px 20px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
 .exerciseoverview h1{
 font-size: 38px;
 font-weight: 800;

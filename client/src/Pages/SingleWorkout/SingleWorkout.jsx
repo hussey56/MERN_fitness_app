@@ -58,7 +58,7 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
             {data.exercises.map((ex)=>(
                 <div className="col-md-4">
         <div className="swcard">
-            <div className="swcard-title">
+            <div className="dwtitle">
                 {ex.exerciseName}
             </div>
             <div className="swcard-body">

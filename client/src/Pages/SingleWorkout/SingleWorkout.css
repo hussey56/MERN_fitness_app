@@ -36,32 +36,51 @@
 .swcontainer h2{
     font-size: 40px;
     font-weight: 500;
-    color: rgba(54, 21, 21, 0.803);
+    color: rgba(22, 9, 9, 0.803);
 }
 .swcontainer h2 span{
    color: rgba(54, 21, 21, 0.99);
    font-weight: 600;
    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
+}
+.swcontainer h3{
+    font-size: 40px;
+    font-weight: 500;
+}
+.swcontainer h3 span:first-child{
+    font-weight: 600;
+    font-family: cursive;
 }
 .swcard{
     width: 100%;
     height: auto;
     border-radius: 29px;
-    padding: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.414);
+    padding:5px;
+    border: 2px solid rgba(128, 128, 128, 0.538);
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.058); 
+    background: #ffffffab;
    }
-   .swcard-title{
-    text-align: center;
-    font-weight: bold;
-    font-size: 32px;
-    font-family: cursive;
+   .swcard:hover{
+    transform: translateY(-1.2rem);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.016);
    }
+
    .swcard-body{
     padding: 10px 20px;
    }
    .swcard-body p{
     font-size: 24px;
+   }
+    .dwcard-body{
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+   }
+   .dwcard-body p{
+    font-size: 28px;
+   }
+   .dwcard-body strong{
+    font-weight: 400;
    }
    #swtext{
     font-size: 18px;
@@ -75,6 +94,9 @@
         flex-direction: column;
     }
     .swcontainer h2{
+        font-size: 24px;
+    }
+    .swcontainer h3{
         font-size: 24px;
     }
 }

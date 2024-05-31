@@ -91,6 +91,16 @@ export const deleteworkout = async(data)=>{
     }
     return response;
 }
+export const deletediet = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/deletediet',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const creatediet = async(data)=>{
     let response;
     try {
