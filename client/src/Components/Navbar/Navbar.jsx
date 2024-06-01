@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Hamburger from "../../Assets/hamburger.svg";
 import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { signout } from "../../Api/internal";
-import { resetUser } from "../../Store/UserSlice";
+import { getalerts, signout } from "../../Api/internal";
+import { resetUser, setAlerts } from "../../Store/UserSlice";
 
 const Navbar = () => {
+  const user = useSelector((state)=>state.user);
+
   const  Auth = useSelector((state)=>state.user);
   const [showNavbar, setShowNavbar] = useState(false);
   const header = useNavigate();
@@ -22,6 +24,7 @@ const Navbar = () => {
     await signout();
     dispatch(resetUser());
   };
+
   return (
     <nav className="navbar">
       <div className="nav-container">
@@ -52,7 +55,7 @@ const Navbar = () => {
               <NavLink to="/mydiet">My Diet</NavLink>
             </li>
             <li>
-              <NavLink to="/alerts">Alerts ( <strong className="text-primary">0</strong> )</NavLink>
+              <NavLink to="/alerts">Alerts ( <strong className="text-primary">{user.alerts.length}</strong> )</NavLink>
             </li>
             <li className="button-59" onClick={Logout}>
             Profile

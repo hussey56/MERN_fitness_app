@@ -16,6 +16,15 @@ export const getworkouts = async(userId)=>{
     }
     return response;
 }
+export const getalerts = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/alerts/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const getdiets = async(userId)=>{
     let response ;
     try {
@@ -75,6 +84,26 @@ export const createworkout = async(data)=>{
     let response;
     try {
         response = await api.post('/createworkout',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const adddiet = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/addroutinediet',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const addworkout = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/addroutineworkout',data)
 
     } catch (error) {
         return error;

@@ -11,9 +11,11 @@ const wSchema = new Schema({
     time:{type:String,required:true}
   });
   const nSchema = new Schema({
+    id:{type:String,required:true},
     message:{type:String,required:true},
-    time:{type:String,required:true}
-
+    time:{type:String,required:true},
+    category:{type:String,required:true},
+    view:{type:Boolean,required:true}
   });
 const userSchema = new Schema(
     {

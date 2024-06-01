@@ -7,6 +7,7 @@ import { setWorkout, switchAlert } from "../../Store/WorkoutSlice";
 import WCard from "./Component/WCard";
 import { MyAlert } from "../../Hooks/useAlert";
 import Loader from "../../Components/Loader/Loader";
+import Notifier from "../../Components/Navbar/Notifier";
 const Workout = () => {
   const [loading, setLoading] = useState(false);
   const header = useNavigate();
@@ -37,6 +38,7 @@ const Workout = () => {
   }, []);
   return (
     <div className="workout-container">
+      <Notifier/>
       <div className="container">
         {loading === true ? <Loader text="Loading workouts..."/>:
         <>

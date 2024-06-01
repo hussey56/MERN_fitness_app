@@ -7,6 +7,8 @@ import { deleteworkout } from '../../Api/internal';
 import Loader from '../../Components/Loader/Loader';
 import { switchAlert } from '../../Store/WorkoutSlice';
 import { MyAlert } from '../../Hooks/useAlert';
+import WRoutineButton from './Component/RoutineWButton';
+import Notifier from '../../Components/Navbar/Notifier';
 const SingleWorkout = () => {
     const location = useLocation();
     const dispatch = useDispatch();
@@ -43,6 +45,7 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
    }
   return (
     <div className='container'>
+        <Notifier/>
         <div className="singleworkout">
         <span><i class="fa-solid fa-dumbbell"></i>  {data.category}</span>
 
@@ -50,7 +53,7 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
         <div className="swcontainer mt-2 mb-1">
 <h2><span>Workout : </span>{data.name}</h2>
 <div>
-    <button className='btn btn-outline-info mx-1  my-1 btn-lg'>Add to Routine</button>
+    <WRoutineButton data={data}/>
     <button className='btn btn-danger mx-1 my-1 btn-lg' data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Workout</button>
 </div>
         </div>

@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { MyAlert } from "../../Hooks/useAlert";
 import { switchAlert } from "../../Store/WorkoutSlice";
 import { deletediet } from "../../Api/internal";
-
+import RoutineButton from "./Component/RoutineButton";
+import Notifier from "../../Components/Navbar/Notifier";
 const SingleDiet = () => {
   const location = useLocation();
   const data = location.state?.singlediet;
@@ -13,6 +14,7 @@ const SingleDiet = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 const header = useNavigate();
+
   const handleDelete = async (e) => {
     e.preventDefault();
     const cdata = {
@@ -48,6 +50,7 @@ const header = useNavigate();
   }
   return (
     <div className="container">
+      <Notifier/>
       <div className="singleworkout">
         <span style={{ textTransform: "uppercase", fontWeight: 500 }}>
           <i class="text-warning fa-solid fa-utensils mx-1"></i> {data.mealType}{" "}
@@ -62,9 +65,7 @@ const header = useNavigate();
           {data.totalCalories} <span className="text-danger">calories</span>)
         </h3>
         <div>
-          <button className="btn btn-outline-success mx-1  my-1 btn-lg">
-            Add to Routine
-          </button>
+          <RoutineButton data={data}/>
           <button
             className="btn btn-danger mx-1 my-1 btn-lg"
             data-bs-toggle="modal"
@@ -146,6 +147,7 @@ const header = useNavigate();
           </div>
         </div>
       </div>
+     
     </div>
   );
 };

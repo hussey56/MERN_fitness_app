@@ -5,6 +5,7 @@ const UserDTO = require("../dto/user");
 const RefreshToken = require("../model/token");
 const JWTService = require("../services/JWTservice");
 const passwordPattern = /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,25}/;
+const MongoDbPattern = /^[0-9a-fA-F]{24}$/
 
 const UserController = {
   async signup(req, res, next) {
@@ -202,6 +203,86 @@ async refresh(req,res,next){
         const userDto = new UserDTO(user);
         return res.status(200).json({user:userDto,auth:true})
     
+},
+async adroutinediet(req,res,next){
+  const userSchema = Joi.object({
+    uId:Joi.string().regex(MongoDbPattern).required(),
+    id:Joi.string().regex(MongoDbPattern).required(),
+    name:Joi.string().min(5).max(30).required(),
+    time:Joi.string().required(),
+});
+const{ error }= userSchema.validate(req.body);
+if(error){
+    return next(error);
+}
+const {uId,id,name,time} = req.body
+try {
+  const user = await User.findById(uId);
+  if (!user) {
+    return res.status(404).send('User not found');
+  }
+const updateData ={
+  id,
+  name,
+  time
+};
+  user.diets.push(updateData); // Push new workouts to existing array
+  await user.save();
+
+ return res.status(200).json(user);
+} catch (error) {
+  return next(error);
+}
+},
+async adroutinewaorkout(req,res,next){
+  const userSchema = Joi.object({
+    uId:Joi.string().regex(MongoDbPattern).required(),
+    id:Joi.string().regex(MongoDbPattern).required(),
+    name:Joi.string().min(5).max(30).required(),
+    time:Joi.string().required(),
+});
+const{ error }= userSchema.validate(req.body);
+if(error){
+    return next(error);
+}
+const {uId,id,name,time} = req.body
+try {
+  const user = await User.findById(uId);
+  if (!user) {
+    return res.status(404).send('User not found');
+  }
+const updateData ={
+  id,
+  name,
+  time
+};
+  user.workouts.push(updateData); // Push new workouts to existing array
+  await user.save();
+
+ return res.status(200).json(user);
+} catch (error) {
+  return next(error);
+}
+},
+async getuseralerts(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+const alerts  = user.notifications;
+return res.status(200).json(alerts);
+ }catch(error){
+  return next(error);
+ }
 }
 }
 module.exports = UserController;

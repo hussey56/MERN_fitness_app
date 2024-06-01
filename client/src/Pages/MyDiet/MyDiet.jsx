@@ -8,7 +8,9 @@ import { switchAlert } from '../../Store/WorkoutSlice';
 import { MyAlert } from '../../Hooks/useAlert';
 import {useNavigate} from 'react-router-dom'
 import Loader from '../../Components/Loader/Loader'
+import Notifier from '../../Components/Navbar/Notifier';
 const MyDiet = () => {
+
   const [loading,setLoading ] = useState(false);
   const diets = useSelector((state)=>state.diet.diets);
   const userId = useSelector((state)=>state.user._id);
@@ -41,7 +43,9 @@ dispatch(setDiet(response.data.diets))
     fetchDiets();
   },[])
   return (
+    
     <div className="container">
+      <Notifier/>
       {loading ===true ? <Loader text='Loading diets... '/> :
       <>
 <DSearch/>

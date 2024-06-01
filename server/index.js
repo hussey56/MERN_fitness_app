@@ -28,13 +28,14 @@ app.use(router);
 dbConnect();
 cron.schedule('* * * * *', async () => {
   const currentDateTime = new Date();
-  const users = await User.find();
+  const users = await User.find(); 
 
   for (const user of users) {
     await updateNotifications(user, currentDateTime);
     await user.save();
   }
   console.log("Notifier Running"); 
+   
 });
 app.use(errorHandler);
 app.listen(PORT, console.log(`Backend is running on the ${PORT}`));

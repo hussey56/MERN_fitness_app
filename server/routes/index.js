@@ -12,13 +12,19 @@ Router.get('/test',(req,res)=>res.json({msg:"Working Backend!"}));;
  Router.post('/reguser',UserController.signup);
 
  //login
-Router.post('/login',UserController.login);
+Router.post('/login',UserController.login); 
 
 //logout
 Router.post('/logout',auth,UserController.logout);
 
 //refresh
 Router.get('/refresh',UserController.refresh);
+
+// add diet to routine
+Router.post('/addroutinediet',auth,UserController.adroutinediet);
+
+// add workout to routine
+Router.post('/addroutineworkout',auth,UserController.adroutinewaorkout);
 
 // create workout
 Router.post("/createworkout",auth,WorkoutController.createWorkout);
@@ -35,6 +41,11 @@ Router.post("/creatediet",auth,NutritionController.create);
 
 // User Diets
 Router.get("/userdiets/:userId",auth,NutritionController.getuserdiets);
+
+
+// User Alerts
+Router.get("/alerts/:userId",UserController.getuseralerts);
+
 
 // Delete a diet
 Router.post('/deletediet',auth,NutritionController.deleteDiet);

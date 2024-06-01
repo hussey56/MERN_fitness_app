@@ -6,6 +6,7 @@ const initialState = {
   username: "",
   fullname: "",
   auth: false,
+  alerts:[]
 };
 
 export const UserSlice = createSlice({
@@ -27,9 +28,12 @@ export const UserSlice = createSlice({
       state.fullname = "";
       state.auth = false;
     },
+    setAlerts:(state,action)=>{
+      state.alerts = action.payload;
+    }
   },
 });
 
-export const { setUser, resetUser } = UserSlice.actions;
+export const { setUser, resetUser ,setAlerts} = UserSlice.actions;
 
 export default UserSlice.reducer;
