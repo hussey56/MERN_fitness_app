@@ -51,8 +51,11 @@ const Navbar = () => {
             <li>
               <NavLink to="/mydiet">My Diet</NavLink>
             </li>
+            <li>
+              <NavLink to="/alerts">Alerts ( <strong className="text-primary">0</strong> )</NavLink>
+            </li>
             <li className="button-59" onClick={Logout}>
-             My Account
+            Profile
             </li>
             
           </ul>

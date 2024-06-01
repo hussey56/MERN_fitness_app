@@ -14,6 +14,7 @@ import { NotificationContainer } from "react-notifications";
 import AddDiet from "./Pages/MyDiet/AddDiet/AddDiet";
 import SingleWorkout from "./Pages/SingleWorkout/SingleWorkout";
 import SingleDiet from "./Pages/SingleDiet/SingleDiet";
+import Alerts from "./Pages/Alerts/Alerts";
 function App() {
   const showNotification = useSelector((state) => state.workout.showalert);
 
@@ -50,6 +51,15 @@ function App() {
             element={
               <Layout isAuth={isAuth}>
                 <MyDiet />
+              </Layout>
+            }
+          />
+                 <Route
+            path="/alerts"
+            exact
+            element={
+              <Layout isAuth={isAuth}>
+                <Alerts/>
               </Layout>
             }
           />

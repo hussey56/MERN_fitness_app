@@ -4,7 +4,7 @@ import { signout } from '../../Api/internal';
 import { resetUser } from '../../Store/UserSlice';
 import {useDispatch} from 'react-redux'
 import { NavLink } from 'react-router-dom';
-import Card from '../../Components/Card/Card';
+import Card from './Card/Card';
 import Routine from './Components/Routine';
 import Stat from './Components/Stat';
 import Graphs from './Graphs';

@@ -8,7 +8,7 @@ const Card = () => {
     { title: "Workouts", icon: <BiDumbbell /> ,path:"/workouts"},
     { title: "Diet", icon: <BiFoodMenu />,path:"/mydiet" },
     { title: "Progress", icon: <BiBarChart />,path:"/" },
-    { title: "Alerts", icon: <BiAlarm />,path:"/"  },
+    { title: "Alerts", icon: <BiAlarm />,path:"/alerts"  },
   ];
   return (
     <div className="container mt-4">

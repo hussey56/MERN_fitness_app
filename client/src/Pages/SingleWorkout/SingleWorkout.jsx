@@ -62,9 +62,9 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
                 {ex.exerciseName}
             </div>
             <div className="swcard-body">
-                <p><i class="text-info fa-solid fa-weight-hanging mx-2"></i> <strong>Weight: </strong> {ex.weight} Kg</p>
-                <p><i class="text-info fa-solid fa-arrow-down-1-9 mx-2"></i>  <strong>Reps: </strong> {ex.reps}</p>
-                <p><i class="text-info fa-solid fa-clone mx-2"></i>  <strong>Sets: </strong> {ex.sets}</p>
+                <p><i class="text-danger fa-solid fa-weight-hanging mx-2"></i> <strong>Weight: </strong> {ex.weight} Kg</p>
+                <p><i class="text-dark fa-solid fa-arrow-down-1-9 mx-2"></i>  <strong>Reps: </strong> {ex.reps}</p>
+                <p><i class="text-danger fa-solid fa-clone mx-2"></i>  <strong>Sets: </strong> {ex.sets}</p>
                {ex.notes.length >= 1 && <> <p><i class="text-warning fa-solid fa-note-sticky mx-2"></i> <strong>Notes : </strong></p>
                 <ReadMore maxLength={38} text={ex.notes} /></>}
             </div>

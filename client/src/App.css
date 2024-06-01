@@ -1,3 +1,16 @@
+.welcome{
+    font-size: 50px;
+    padding: 30px;
+    font-family: cursive;
+    text-align: center;
+}
+.welcome #name{
+    font-family: monospace;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
 .charts{
     height: 340px;
     padding: 10px;

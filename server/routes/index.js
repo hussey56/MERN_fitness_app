@@ -4,8 +4,9 @@ const UserController = require('../controller/User')
 const auth = require('../middleware/auth');
 const WorkoutController = require('../controller/Workout');
 const NutritionController = require('../controller/Nutrition');
+const User = require('../model/user');
 //testing
-Router.get('/test',(req,res)=>res.json({msg:"Working Backend!"}));
+Router.get('/test',(req,res)=>res.json({msg:"Working Backend!"}));;
 
 // register user
  Router.post('/reguser',UserController.signup);

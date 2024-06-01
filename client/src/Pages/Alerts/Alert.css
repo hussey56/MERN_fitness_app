@@ -1,0 +1,77 @@
+.alert-heading{
+    text-align: center;
+    font-size: 54px;
+    font-family: cursive;
+    font-weight: 700;
+}
+.alert-container{
+    width: 100%;
+    height: auto;
+    padding: 40px 120px;
+}
+.alert-tile{
+    width: 100%;
+    height: auto;
+    margin: 10px 2px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+}
+.icon-container i{
+    font-size: 40px;
+}
+.bg-diet{
+    background-color: rgba(254, 196, 38, 0.432);
+}
+.bg-workout{
+    background-color: rgba(0, 179, 255, 0.262);
+}
+.alert-text{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+height: 90px;
+padding: 15px 5px;
+}
+.alert-text h3{
+    font-family: monospace;
+    font-size: 26px;
+}
+.alert-view{
+    font-size: 24px;
+    color: rgb(30, 30, 210);
+    margin: 10px;    cursor: pointer;
+}
+@media screen and (max-width:768px) {
+    .alert-heading{
+        font-size: 34px;
+    }
+    .alert-container{
+        padding: 15px;
+    }
+    .alert-tile{
+        gap: 5px;
+    }
+    .icon-container {
+        height: 60px;
+        width: 60px;
+        border-radius: 10px;
+    }
+    .icon-container i{
+        font-size: 20px;
+    }
+    #alert-time{
+        font-size: 14px !important;
+    }
+    .alert-text h3{
+        font-size: 20px;
+    }
+}
