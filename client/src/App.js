@@ -15,8 +15,8 @@ import AddDiet from "./Pages/MyDiet/AddDiet/AddDiet";
 import SingleWorkout from "./Pages/SingleWorkout/SingleWorkout";
 import SingleDiet from "./Pages/SingleDiet/SingleDiet";
 import Alerts from "./Pages/Alerts/Alerts";
+import Progress from "./Pages/Progress/Progress";
 function App() {
-  const showNotification = useSelector((state) => state.workout.showalert);
 
   const isAuth = useSelector((state) => state.user.auth);
   const loading = useAutoLogin();
@@ -82,7 +82,7 @@ function App() {
             }
           />
             <Route
-            path="/singleworkout"
+            path="/singleworkout/:id"
             exact
             element={
               <Layout isAuth={isAuth}>
@@ -91,11 +91,20 @@ function App() {
             }
           />
             <Route
-            path="/singlediet"
+            path="/singlediet/:id"
             exact
             element={
               <Layout isAuth={isAuth}>
                 <SingleDiet/>
+              </Layout>
+            }
+          />
+           <Route
+            path="/progress"
+            exact
+            element={
+              <Layout isAuth={isAuth}>
+                <Progress/>
               </Layout>
             }
           />

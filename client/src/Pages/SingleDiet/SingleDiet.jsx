@@ -1,21 +1,35 @@
-import React, { useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import {  useNavigate, useParams } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { MyAlert } from "../../Hooks/useAlert";
 import { switchAlert } from "../../Store/WorkoutSlice";
-import { deletediet } from "../../Api/internal";
+import { deletediet, singleDiet } from "../../Api/internal";
 import RoutineButton from "./Component/RoutineButton";
 import Notifier from "../../Components/Navbar/Notifier";
 const SingleDiet = () => {
-  const location = useLocation();
-  const data = location.state?.singlediet;
+  const [data,setData] = useState(null)
   const ModelRef = useRef();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [lText,setLtext] = useState("Fetching Diet ...");
 const header = useNavigate();
+let { id } = useParams();
+const fetchDetaisl =async()=>{
+  setLoading(true);
+  setLtext("Fetching Diet ...")
+  const reponse = await singleDiet(id);
+  if(reponse.status == 200){
+    setData(reponse.data.data);
+  }else{
+    setData(reponse.data.data)
+  }
+  setLoading(false);
+}
 
   const handleDelete = async (e) => {
+    setLoading(true);
+    setLtext("Deleting workout ...")
     e.preventDefault();
     const cdata = {
       userId: data.userId,
@@ -42,14 +56,19 @@ const header = useNavigate();
     }
     setLoading(false);
   };
+  useEffect(()=>{
+    fetchDetaisl();
+  },[id])
   if (!data) {
-    return <h2>No data found.</h2>;
+    return <></>;
   }
   if (loading) {
-    return <Loader text="Deleting the Workout ..." />;
+    return <Loader text={lText} />;
   }
+
   return (
-    <div className="container">
+     <>
+      <div className="container">
       <Notifier/>
       <div className="singleworkout">
         <span style={{ textTransform: "uppercase", fontWeight: 500 }}>
@@ -148,7 +167,8 @@ const header = useNavigate();
         </div>
       </div>
      
-    </div>
+    </div></>
+    
   );
 };
 

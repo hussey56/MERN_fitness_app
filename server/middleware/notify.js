@@ -11,7 +11,7 @@ async function updateNotifications(user, currentDateTime) {
     if (dietHour == crntHour && dietMinute == crntMinute) {
       const notification = `Your workout ${workout.name} is scheduled up at ${workout.time}`;
       const data ={
-        id:workout._id,
+        id:workout.id,
         category:"workout",
         message:notification,
         time:Date.now(),
@@ -32,7 +32,7 @@ async function updateNotifications(user, currentDateTime) {
  
       const notification = `It's time for your ${diet.name} Set at ${diet.time}`;
       const data ={
-        id:diet._id,
+        id:diet.id,
         category:"diet",
         message:notification,
         time:Date.now(),

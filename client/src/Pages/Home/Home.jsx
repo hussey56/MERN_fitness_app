@@ -18,9 +18,9 @@ const Home = () => {
     <Notifier/>
     <h1 className='welcome'><span style={{fontWeight:'600'}}>Welcome to </span><span  className="text-primary"
               style={{ fontFamily: "cursive", fontWeight: "bold" }}>F</span>Tracker ! <span id='name'>{Auth.username}</span></h1>
-   
-   <Graphs/>
    <Card/>
+   <Graphs/>
+   
   
   
     </>

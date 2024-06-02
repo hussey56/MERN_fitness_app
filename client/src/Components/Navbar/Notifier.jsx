@@ -13,7 +13,7 @@ const Notifier = () => {
     }
     }
     useEffect(()=>{
-      setInterval(fetchAlerts,3000)
+      setInterval(fetchAlerts,5000)
       
     },[])
   return (

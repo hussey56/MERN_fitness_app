@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
-import { adddiet } from '../../../Api/internal';
+import React, { useEffect, useRef, useState } from 'react'
+import { adddiet, checkDiet, removeDiet } from '../../../Api/internal';
 import {useSelector} from'react-redux'
 const RoutineButton = ({data}) => {
     const userId = useSelector((state)=>state.user._id)
     const [time, setTime] = useState('08:00'); // Initial time
-
+const [availabe,setAvailable] = useState(false);
+const [loading,setLoading] = useState(false);
 const handleTimeChange = (e) => {
   console.log(e.target.value)
   setTime(e.target.value);
@@ -12,29 +13,61 @@ const handleTimeChange = (e) => {
 const openRef = useRef();
 const closeRef = useRef();
 const handelAddRoutine = async(e)=>{
-e.preventDefault();
-const cdata = {
-    uId:userId,
-    id:data._id,
-name:data.name,
-time:time
-}
-const response = await adddiet(cdata);
-if(response.status === 200){
-    alert("added to diet");
-}else{
-    alert("not added to diet");
-}
-closeRef.current.click();
+  e.preventDefault();
 
+  if(availabe == false){
+    const cdata = {
+      uId:userId,
+      id:data._id,
+  name:data.name,
+  time:time
+  }
+  const response = await adddiet(cdata);
+  if(response.status === 200){
+      check();
+  }else{
+      alert("not added to diet");
+  }
+  closeRef.current.click();
+  }else{
+    const response = await removeDiet(userId,data._id);
+  if(response.status === 200){
+      check();
+  }else{
+      alert("Not Removed");
+  }
+  }
+
+}
+const check = async()=>{
+  setLoading(true)
+  const response = await checkDiet(userId,data._id);
+  if(response.status == 200){
+    setAvailable(response.data.available);
+  }
+  setLoading(false)
+}
+useEffect(()=>{
+  check();
+},[data])
+if(loading){
+  return<></>
 }
   return (
     <>
-      <button className="btn btn-outline-success mx-1  my-1 btn-lg" ref={openRef}  data-bs-toggle="modal"
-            data-bs-target="#OpenDietModal">
-            Add to Routine
-          </button>
-
+    {availabe == true ? 
+     <button className="btn btn-success mx-1  my-1 btn-lg" onClick={handelAddRoutine}>
+     Remove from Routine
+   </button>
+    
+    : <>
+    <button className="btn btn-outline-success mx-1  my-1 btn-lg" onClick={()=>openRef.current.click()}>
+    Add to Routine
+  </button>
+    
+     
+<input type="hidden" ref={openRef}  data-bs-toggle="modal"
+            data-bs-target="#OpenDietModal" />
       <div
         className="modal fade"
         id="OpenDietModal"
@@ -76,6 +109,7 @@ closeRef.current.click();
           </div>
         </div>
       </div>
+      </>}
     </>
   )
 }

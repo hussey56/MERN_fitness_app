@@ -6,7 +6,8 @@ const initialState = {
   username: "",
   fullname: "",
   auth: false,
-  alerts:[]
+  alerts:[],
+  newAlert:[]
 };
 
 export const UserSlice = createSlice({

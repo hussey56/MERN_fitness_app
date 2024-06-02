@@ -283,6 +283,141 @@ return res.status(200).json(alerts);
  }catch(error){
   return next(error);
  }
+},
+async viewAllAlerts(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+if(user.notifications.length >=1){
+  for(const alerts of user.notifications){
+    alerts.view = true;
+    }
+    await user.save();
+}
+return res.status(201).json("success");
+
+
+ }catch(error){
+  return next(error);
+ }
+},
+async checkDiet(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+    dietId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId,dietId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+let available = false;
+
+for(const diet of user.diets){
+  if(diet.id == dietId){
+    available = true
+  }
+}
+return res.status(200).json({available})
+
+ }catch(error){
+  return next(error);
+ }
+},
+async checkWorkout(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+    workoutId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId,workoutId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+let available = false;
+
+for(const workout of user.workouts){
+  if(workout.id == workoutId){
+    available = true
+  }
+}
+return res.status(200).json({available})
+
+ }catch(error){
+  return next(error);
+ }
+},
+async deletedIET(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+    dietId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId,dietId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+let filterdiet;
+const diets  = user.diets;
+ filterdiet = diets.filter((diet)=>(diet.id != dietId));
+ user.diets = filterdiet;
+ await user.save();
+return res.status(200).json({diets:user.diets})
+
+ }catch(error){
+  return next(error);
+ }
+},
+async deleteWorkout(req,res,next){
+  const userFindingSchema = Joi.object({
+    userId:Joi.string().regex(MongoDbPattern).required(),
+    workoutId:Joi.string().regex(MongoDbPattern).required(),
+ });
+ const { error } = userFindingSchema.validate(req.params);
+ if (error) {
+   return next(error);
+ }
+ const {userId,workoutId} = req.params;
+ try{
+const user = await User.findOne({_id:userId});
+if (!user) {
+  return res.status(404).send('User not found');
+} 
+let filterw;
+const workouts  = user.workouts;
+ filterw = workouts.filter((w)=>(w.id != workoutId));
+ user.workouts = filterw;
+ await user.save();
+return res.status(200).json({workout:user.workouts})
+
+ }catch(error){
+  return next(error);
+ }
 }
 }
 module.exports = UserController;

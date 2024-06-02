@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const WCard = ({workout}) => {
   const header = useNavigate();
   const gotoWorkout = ()=>{
-    header('/singleworkout',{state:{data:workout}});
+    header(`/singleworkout/${workout._id}`);
   }
   return (
     <>

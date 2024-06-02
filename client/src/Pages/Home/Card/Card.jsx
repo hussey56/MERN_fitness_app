@@ -7,7 +7,7 @@ const Card = () => {
   const cards = [
     { title: "Workouts", icon: <BiDumbbell /> ,path:"/workouts"},
     { title: "Diet", icon: <BiFoodMenu />,path:"/mydiet" },
-    { title: "Progress", icon: <BiBarChart />,path:"/" },
+    { title: "Progress", icon: <BiBarChart />,path:"/progress" },
     { title: "Alerts", icon: <BiAlarm />,path:"/alerts"  },
   ];
   return (

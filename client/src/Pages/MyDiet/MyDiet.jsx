@@ -51,7 +51,7 @@ dispatch(setDiet(response.data.diets))
 <DSearch/>
       <div className="row my-3">
         {diets.length === 0 && <h2 className='text-center'>No Diet Found</h2>}
-      <div className="container col-md-4 col-12 my-2">
+      <div className="col-md-4 col-12 my-2">
         <div className='empty-diet-card'>
         <i class="text-warning fa-solid fa-circle-plus" onClick={gotoAddDiet}></i>
 

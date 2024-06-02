@@ -102,6 +102,28 @@ return res.status(200).json({workouts})
 
     }
 
+  },
+  async singleworkout(req,res,next){
+    const DeleteSchema = Joi.object({
+      id:Joi.string().regex(MongoDbPattern).required(),
+      });
+      const { error } = DeleteSchema.validate(req.params);
+      if (error) {
+        return next(error);
+      }
+      const {id} = req.params
+      let data;
+      try {
+        data = await Workout.findById(id)
+    } catch (error) {
+        return next(error);
+    }
+    if(data){
+       return res.status(200).json({data});
+    }else{
+      return res.status(200).json({data:null});
+
+    }
   }
 }
 module.exports = WorkoutController;

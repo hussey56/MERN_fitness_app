@@ -84,7 +84,7 @@ const NutritionController = {
     }
     if (sortValue == "protein") {
       sortOption = {
-        'totalMacros.protein': -1
+        "totalMacros.protein": -1,
       };
     }
     if (sortValue == "foodItem") {
@@ -106,38 +106,54 @@ const NutritionController = {
     }
     return res.status(200).json({ results });
   },
-  async deleteDiet(req,res,next){
+  async deleteDiet(req, res, next) {
     const DeleteSchema = Joi.object({
-      userId:Joi.string().regex(MongoDbPattern).required(),
-      deleteId:Joi.string().regex(MongoDbPattern).required(),
-      });
-      const { error } = DeleteSchema.validate(req.body);
-      if (error) {
-        return next(error);
-      }
-      const {userId,deleteId} = req.body
-      let diet;
-      try {
-        diet = await Nutrition.findOne({_id:deleteId,userId})
+      userId: Joi.string().regex(MongoDbPattern).required(),
+      deleteId: Joi.string().regex(MongoDbPattern).required(),
+    });
+    const { error } = DeleteSchema.validate(req.body);
+    if (error) {
+      return next(error);
+    }
+    const { userId, deleteId } = req.body;
+    let diet;
+    try {
+      diet = await Nutrition.findOne({ _id: deleteId, userId });
     } catch (error) {
-        return next(error);
+      return next(error);
     }
-    if(diet){
-      try{
-        await Nutrition.deleteOne({_id:deleteId,userId});
-
-  
-      }catch(error){
+    if (diet) {
+      try {
+        await Nutrition.deleteOne({ _id: deleteId, userId });
+      } catch (error) {
         return next(error);
       }
-      return res.status(200).json({message:'Diet Deleted'});
-
-    }else{
-      return res.status(200).json({message:'Diet Not Found'});
-
+      return res.status(200).json({ message: "Diet Deleted" });
+    } else {
+      return res.status(200).json({ message: "Diet Not Found" });
     }
-
-  }
+  },
+  async singleDiet(req, res, next) {
+    const DeleteSchema = Joi.object({
+      id: Joi.string().regex(MongoDbPattern).required(),
+    });
+    const { error } = DeleteSchema.validate(req.params);
+    if (error) {
+      return next(error);
+    }
+    const { id } = req.params;
+    let data;
+    try {
+      data = await Nutrition.findOne({_id:id});
+    } catch (error) {
+      return next(error);
+    }
+    if (data) {
+      return res.status(200).json({ data:data });
+    } else {
+      return res.status(200).json({ data: null });
+    }
+  },
 };
 
 module.exports = NutritionController;

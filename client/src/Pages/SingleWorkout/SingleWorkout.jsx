@@ -1,26 +1,37 @@
-import React, { useRef, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import './SingleWorkout.css';
 import ReadMore from './Component/ReadMore';
-import { deleteworkout } from '../../Api/internal';
+import { deleteworkout, singleWorkout } from '../../Api/internal';
 import Loader from '../../Components/Loader/Loader';
 import { switchAlert } from '../../Store/WorkoutSlice';
 import { MyAlert } from '../../Hooks/useAlert';
 import WRoutineButton from './Component/RoutineWButton';
 import Notifier from '../../Components/Navbar/Notifier';
 const SingleWorkout = () => {
+    
     const location = useLocation();
     const dispatch = useDispatch();
     const header = useNavigate();
     const ModelRef = useRef();
 const [loading,setLoading] = useState(false);
-    const data = location.state?.data; 
-
-    if (!data) {
-        return <h2>No data found.</h2>;
-    }
+const [data,setData] = useState(null)
+const [lText,setLtext] = useState("Fetching Workout ...");
+let { id } = useParams();
+const fetchDetaisl =async()=>{
+  setLoading(true);
+  setLtext("Fetching Diet ...")
+  const reponse = await singleWorkout(id);
+  if(reponse.status == 200){
+    setData(reponse.data.data);
+  }else{
+    setData(reponse.data.data)
+  }
+  setLoading(false);
+}
    const handleDelete = async (e)=>{
+    setLtext("Deleting Workout ...")
     e.preventDefault();
     const cdata ={
         userId:data.userId,
@@ -40,8 +51,14 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
     }
     setLoading(false)
    }
+   useEffect(()=>{
+    fetchDetaisl();
+   },[])
+   if (!data) {
+    return <></>;
+}
    if(loading){
-    return <Loader text='Deleting the Workout ...'/>
+    return <Loader text={lText}/>
    }
   return (
     <div className='container'>

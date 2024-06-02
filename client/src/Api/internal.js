@@ -25,6 +25,69 @@ export const getalerts = async(userId)=>{
     }
     return response;
 }
+export const viewalerts = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/viewAllAlerts/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const checkWorkout = async(userId,id)=>{
+    let response ;
+    try {
+        response = await api.get(`/checkworkout/${userId}/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const checkDiet = async(userId,id)=>{
+    let response ;
+    try {
+        response = await api.get(`/checkdiet/${userId}/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const removeDiet = async(userId,id)=>{
+    let response ;
+    try {
+        response = await api.get(`/removediet/${userId}/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const removeWorkout = async(userId,id)=>{
+    let response ;
+    try {
+        response = await api.get(`/removeworkout/${userId}/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const singleWorkout = async(id)=>{
+    let response ;
+    try {
+        response = await api.get(`/workout/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const singleDiet = async(id)=>{
+    let response ;
+    try {
+        response = await api.get(`/diet/${id}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const getdiets = async(userId)=>{
     let response ;
     try {
