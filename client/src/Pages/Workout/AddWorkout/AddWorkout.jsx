@@ -71,8 +71,8 @@ const AddWorkout = () => {
   });
   
   const handleSubmit = async (event) => {
-    setLoading(true);
     event.preventDefault();
+    setLoading(true);
     const data = {
       userId:isAuth._id,
       name:values.name,

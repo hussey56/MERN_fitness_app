@@ -70,6 +70,24 @@ export const removeWorkout = async(userId,id)=>{
     }
     return response;
 }
+export const getUserDietProgress = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/userdietprogress/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const getUserWorkoutProgress = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/userworkoutprogress/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const singleWorkout = async(id)=>{
     let response ;
     try {

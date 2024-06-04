@@ -67,7 +67,6 @@ if(loading){
             data-bs-target="#OpenDietModal">
             Add to Routine
           </button>
-          <input type="hidden"  />
 
       <div
         className="modal fade"

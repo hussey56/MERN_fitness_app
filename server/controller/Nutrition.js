@@ -1,6 +1,8 @@
 const Joi = require("joi");
 const Nutrition = require("../model/nutrition");
 const MongoDbPattern = /^[0-9a-fA-F]{24}$/;
+const User = require("../model/user");
+
 const NutritionController = {
   async create(req, res, next) {
     const nutritionRegisterSchema = Joi.object({
@@ -117,7 +119,16 @@ const NutritionController = {
     }
     const { userId, deleteId } = req.body;
     let diet;
+    let user;
     try {
+      user = await User.findById(userId);
+      const alerts = user.notifications;
+      const updatedAlerts = alerts.filter((alert)=>(alert.category != "diet" && alert.id != deleteId));
+      user.notifications = updatedAlerts;
+      const diets = user.diets;
+      const updatedDiets = diets.filter((wrk)=>(wrk.id != deleteId));
+      user.diets = updatedDiets;
+      await user.save();
       diet = await Nutrition.findOne({ _id: deleteId, userId });
     } catch (error) {
       return next(error);

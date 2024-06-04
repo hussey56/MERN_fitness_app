@@ -2,6 +2,7 @@
 const Joi = require("joi");
 const Workout = require("../model/workout");
 const MongoDbPattern = /^[0-9a-fA-F]{24}$/
+const User = require("../model/user");
 const WorkoutController ={
    async createWorkout(req,res,next){
     const workoutRegisterSchema = Joi.object({
@@ -82,7 +83,16 @@ return res.status(200).json({workouts})
       }
       const {userId,deleteId} = req.body
       let workout;
+      let user;
       try {
+        user = await User.findById(userId);
+        const alerts = user.notifications;
+        const updatedAlerts = alerts.filter((alert)=>(alert.category != "workout" && alert.id != deleteId));
+        user.notifications = updatedAlerts;
+        const workouts = user.workouts;
+        const updatedWorkouts = workouts.filter((wrk)=>(wrk.id != deleteId));
+        user.workouts = updatedWorkouts;
+        await user.save();
         workout = await Workout.findOne({_id:deleteId,userId})
     } catch (error) {
         return next(error);

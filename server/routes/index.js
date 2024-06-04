@@ -32,6 +32,12 @@ Router.post("/createworkout",auth,WorkoutController.createWorkout);
 // Users created workouts read
 Router.get("/userworkouts/:userId",auth,WorkoutController.userWorkouts);
 
+// uSER dIET pROGRESS
+Router.get("/userdietprogress/:userId",auth,UserController.getuserdietProgress);
+
+
+// uSER Workout pROGRESS
+Router.get("/userworkoutprogress/:userId",auth,UserController.getuserworkoutProgress);
 // search workouts
 Router.post("/searchworkout",auth,WorkoutController.searchWorkout);
 // delete workout

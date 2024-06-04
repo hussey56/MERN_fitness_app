@@ -9,6 +9,7 @@ import Routine from './Components/Routine';
 import Stat from './Components/Stat';
 import Graphs from './Graphs';
 import Notifier from '../../Components/Navbar/Notifier';
+import BMInChart from './BMInChart';
 const Home = () => {
   const dispatch = useDispatch();
   const  Auth = useSelector((state)=>state.user);
@@ -20,6 +21,7 @@ const Home = () => {
               style={{ fontFamily: "cursive", fontWeight: "bold" }}>F</span>Tracker ! <span id='name'>{Auth.username}</span></h1>
    <Card/>
    <Graphs/>
+   <BMInChart/>
    
   
   

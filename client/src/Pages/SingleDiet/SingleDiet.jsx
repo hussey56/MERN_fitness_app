@@ -9,7 +9,7 @@ import RoutineButton from "./Component/RoutineButton";
 import Notifier from "../../Components/Navbar/Notifier";
 const SingleDiet = () => {
   const [data,setData] = useState(null)
-  const ModelRef = useRef();
+  const Ref = useRef();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [lText,setLtext] = useState("Fetching Diet ...");
@@ -28,16 +28,15 @@ const fetchDetaisl =async()=>{
 }
 
   const handleDelete = async (e) => {
-    setLoading(true);
-    setLtext("Deleting workout ...")
     e.preventDefault();
+    setLtext("Deleting workout ...")
     const cdata = {
       userId: data.userId,
       deleteId: data._id,
     };
     const response = await deletediet(cdata);
     if (response.status == 200) {
-      ModelRef.current.click();
+      Ref.current.click();
       dispatch(switchAlert(true));
       MyAlert({
         type: "success",
@@ -54,7 +53,6 @@ const fetchDetaisl =async()=>{
         },
       });
     }
-    setLoading(false);
   };
   useEffect(()=>{
     fetchDetaisl();
@@ -143,6 +141,8 @@ const fetchDetaisl =async()=>{
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                ref={Ref}
+
               ></button>
             </div>
 
@@ -150,7 +150,6 @@ const fetchDetaisl =async()=>{
               <button
                 type="button"
                 class="btn btn-secondary"
-                ref={ModelRef}
                 data-bs-dismiss="modal"
               >
                 Close

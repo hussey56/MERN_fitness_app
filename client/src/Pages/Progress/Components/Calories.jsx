@@ -6,7 +6,7 @@ import {Chart as ChartJs,
   Title,
   Tooltip,
   Legend,
-  BarElement
+  BarElement,
 } from 'chart.js'
 ChartJs.register(
   CategoryScale,
@@ -17,44 +17,6 @@ BarElement,
   Legend
 )
 const Calories = () => {
-
-    // const data = [
-    //     {
-    //       name: "Mon",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Tue",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Wed",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Thu",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Fri",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Sat",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //     {
-    //       name: "Sun",
-    //       "Calories Eat": 220,
-    //       "Calories Burn": 120,
-    //     },
-    //   ];
     const data ={
       labels:[
         "Monday",
@@ -79,10 +41,39 @@ const Calories = () => {
       ]
     }
     const options ={
-      responsive:true
+      responsive:true,
+      plugins:{
+        legend:{
+          position:"bottom"
+        },
+        title:{
+          display:true,
+          text:"Calories Records",
+          padding: {
+            top: 10,
+            bottom: 20
+        },
+          font: {
+            size: 34,
+            style: 'Bold',
+            family: 'cursive',
+          },
+          color: "#000000",
+
+        }
+      }
+    
     }
   return (
-    <div className='col-md-12'>
+    <div className='col-md-12 mt-3'>
+      <div className="container  genpdf">
+      <select  className='form-control'  >
+        <option value="7">Last 7 Days</option>
+        <option value="30">Last 30 Days</option>
+      </select>
+      <button  className='btn btn-info text-white '>Genrate PDF</button>
+      </div>
+      
     <div className='barchart'>
     <Bar options={options} data={data}/>
     </div>
