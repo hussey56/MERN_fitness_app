@@ -4,7 +4,7 @@ const UserController = require('../controller/User')
 const auth = require('../middleware/auth');
 const WorkoutController = require('../controller/Workout');
 const NutritionController = require('../controller/Nutrition');
-const User = require('../model/user');
+const StatController = require('../controller/CalorienBMI');
 //testing
 Router.get('/test',(req,res)=>res.json({msg:"Working Backend!"}));;
 
@@ -80,6 +80,11 @@ Router.get("/diet/:id",auth,NutritionController.singleDiet);
 // single workout
 Router.get("/workout/:id",auth,WorkoutController.singleworkout);
 
+// add calorie record
+Router.post("/addcalorierecord",auth,StatController.addCalorieRecord);
+
+// calories record
+Router.get("/sevendaycaloriesrecord/:userId/:day",StatController.SevendayCalorieRecord);
 
  
 module.exports = Router 

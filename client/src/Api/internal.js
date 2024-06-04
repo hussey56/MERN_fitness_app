@@ -88,6 +88,15 @@ export const getUserWorkoutProgress = async(userId)=>{
     }
     return response;
 }
+export const getsevendaycalorieRecord = async(userId,day)=>{
+    let response ;
+    try {
+        response = await api.get(`/sevendaycaloriesrecord/${userId}/${day}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const singleWorkout = async(id)=>{
     let response ;
     try {
@@ -215,6 +224,16 @@ export const creatediet = async(data)=>{
     let response;
     try {
         response = await api.post('/creatediet',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const addcalorie = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/addcalorierecord',data)
 
     } catch (error) {
         return error;

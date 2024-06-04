@@ -16,11 +16,15 @@
   height: 80px;
   position: relative;
 }
+.logo{
+  cursor: pointer;
+}
 
 .logo img {
   height: 80px;
   width: 80px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .menu-icon {
