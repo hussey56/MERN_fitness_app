@@ -97,6 +97,33 @@ export const getsevendaycalorieRecord = async(userId,day)=>{
     }
     return response;
 }
+export const getBmiRecord = async(userId,day)=>{
+    let response ;
+    try {
+        response = await api.get(`/sevendaybmirecord/${userId}/${day}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const getBmiData = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/getbmidata/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const getCalorieData = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/getcaloriedata/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const singleWorkout = async(id)=>{
     let response ;
     try {
@@ -234,6 +261,16 @@ export const addcalorie = async(data)=>{
     let response;
     try {
         response = await api.post('/addcalorierecord',data)
+
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const addbmi = async(data)=>{
+    let response;
+    try {
+        response = await api.post('/addbmirecord',data)
 
     } catch (error) {
         return error;

@@ -83,8 +83,20 @@ Router.get("/workout/:id",auth,WorkoutController.singleworkout);
 // add calorie record
 Router.post("/addcalorierecord",auth,StatController.addCalorieRecord);
 
+// Add BMI Record
+Router.post("/addbmirecord",auth,StatController.addBMIrecord);
+
+
 // calories record
 Router.get("/sevendaycaloriesrecord/:userId/:day",StatController.SevendayCalorieRecord);
+// bmi record
+Router.get("/sevendaybmirecord/:userId/:day",StatController.getBMIRecords);
+
+// bmi data for pdf
+Router.get("/getbmidata/:userId",StatController.getBmiData);
+// calorie date for pdf
+Router.get("/getcaloriedata/:userId",StatController.getCalorieData);
+
 
  
 module.exports = Router 

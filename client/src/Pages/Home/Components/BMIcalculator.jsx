@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import {BiSolidBookAdd} from 'react-icons/bi'
+import {useSelector} from 'react-redux'
+import { addbmi } from '../../../Api/internal';
 const BMIcalculator = () => {
+  const userId = useSelector((state)=>state.user._id);
   const [height, setHeight] = useState(1);
   const [weight, setWeight] = useState(1);
   const [bmi, setBMI] = useState(null);
@@ -12,6 +15,29 @@ const BMIcalculator = () => {
         const heightInM = parseFloat(height) / 100; 
           const bmiValue = (weightInKg / (heightInM * heightInM));
           setBMI(bmiValue.toFixed(2)); 
+       }
+       const handelAdd = async(e)=>{
+        e.preventDefault();
+        const todate = new Date();
+
+const data ={
+  userId:userId,
+  result:message,
+  bmi:bmi,
+datetime:todate
+}
+try {
+  const response = await addbmi(data);
+  if(response.status == 201){
+    setBMI(null);
+    setMessage("");
+    setHeight(1);
+    setWeight(1)
+    alert("BMI Added to Records")
+  }
+} catch (error) {
+  console.log(error)
+}
        }
        useEffect(()=>{
         if (bmi < 18.5) {
@@ -40,7 +66,7 @@ const BMIcalculator = () => {
       <button onClick={handleSubmit} disabled={height==0 || weight == 0} className=" w-100 btn btn-info text-white btn-lg ">Calculate</button>
       {bmi && (
         <div className='mt-2'>
-          <h5 className='text-center my-2'>Your BMI is: {bmi}  <span className='text-dark'>( <span className='text-info'>{message}</span> )</span>             <button className=' my-1 btn btn-outline-info '><BiSolidBookAdd/> Add to Record</button>
+          <h5 className='text-center my-2'>Your BMI is: {bmi}  <span className='text-dark'>( <span className='text-info'>{message}</span> )</span>             <button className=' my-1 btn btn-outline-info ' onClick={handelAdd}><BiSolidBookAdd/> Add to Record</button>
 </h5>
         </div>
       )}

@@ -26,7 +26,17 @@
     margin: 20px 0;
 }
 .genpdf select{
-    width: 130px !important;
+    width: 130px ;
+}
+.genpdf{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    align-items: center;
+    margin: 20px 0;
+}
+.bigselect{
+    width: 150px !important;
 }
 .piechart{
     display: flex;

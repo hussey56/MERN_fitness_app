@@ -1,14 +1,13 @@
-const { required } = require("joi");
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const calorieSchema = new Schema({
+const bmiSchema = new Schema({
   userId: { type: String,required:true },
-  calorieIntake: {
-    type: Number,
+  result: {
+    type: String,
     required: true,
   },
-  calorieBurn: {
+  bmi: {
     type: Number,
     required: true,
   },
@@ -20,4 +19,4 @@ const calorieSchema = new Schema({
     timestamps:true
 });
 
-module.exports = mongoose.model("Calorie", calorieSchema, "calorie");
+module.exports = mongoose.model("BMI", bmiSchema, "bmi");
