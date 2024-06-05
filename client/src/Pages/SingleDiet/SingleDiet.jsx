@@ -36,22 +36,28 @@ const fetchDetaisl =async()=>{
     };
     const response = await deletediet(cdata);
     if (response.status == 200) {
+      // MyAlert({
+      //   type: "success",
+      //   message: { title: "Congrats", text: "Diet deleted successfully!" },
+      // });
+      // dispatch(switchAlert(true));
+      alert("Congrats! Diet deleted successfully!")
+
       Ref.current.click();
-      dispatch(switchAlert(true));
-      MyAlert({
-        type: "success",
-        message: { title: "Congrats", text: "Diet deleted successfully!" },
-      });
+
       header("/mydiet");
     } else {
-      dispatch(switchAlert(true));
-      MyAlert({
-        type: "error",
-        message: {
-          title: "Snaps!",
-          text: "Error Occured in the diet deletion.",
-        },
-      });
+      // MyAlert({
+      //   type: "error",
+      //   message: {
+      //     title: "Snaps!",
+      //     text: "Error Occured in the diet deletion.",
+      //   },
+      // });
+      // dispatch(switchAlert(true));
+      console.log("something went wrong diet deleted ")
+
+
     }
   };
   useEffect(()=>{
@@ -70,7 +76,7 @@ const fetchDetaisl =async()=>{
       <Notifier/>
       <div className="singleworkout">
         <span style={{ textTransform: "uppercase", fontWeight: 500 }}>
-          <i class="text-warning fa-solid fa-utensils mx-1"></i> {data.mealType}{" "}
+          <i className="text-warning fa-solid fa-utensils mx-1"></i> {data.mealType}{" "}
         </span>
       </div>
 
@@ -78,7 +84,7 @@ const fetchDetaisl =async()=>{
         <h3>
           <span className="text-dark">Name: </span>
           {data.name} ({" "}
-          <i class="text-danger fa-solid fa-fire-flame-curved"></i>{" "}
+          <i className="text-danger fa-solid fa-fire-flame-curved"></i>{" "}
           {data.totalCalories} <span className="text-danger">calories</span>)
         </h3>
         <div>
@@ -99,23 +105,23 @@ const fetchDetaisl =async()=>{
               <div className="dwtitle">{fd.name}</div>
               <div className="dwcard-body ">
                 <p>
-                  <i class="text-danger fa-solid fa-fire-flame-curved mx-2"></i>{" "}
+                  <i className="text-danger fa-solid fa-fire-flame-curved mx-2"></i>{" "}
                   <strong>Calories : </strong> {fd.calories}
                 </p>
                 <p>
-                  <i class="text-dark mx-2 fa-solid fa-hashtag"></i>{" "}
+                  <i className="text-dark mx-2 fa-solid fa-hashtag"></i>{" "}
                   <strong>Quantity : </strong> {fd.quantity}
                 </p>
                 <p>
-                  <i class="fa-solid fa-egg text-warning mx-2"></i>{" "}
+                  <i className="fa-solid fa-egg text-warning mx-2"></i>{" "}
                   <strong>Proteins : </strong> {fd.macros.protein}
                 </p>
                 <p>
-                  <i class="fa-solid fa-wheat-awn text-warning mx-2"></i>{" "}
+                  <i className="fa-solid fa-wheat-awn text-warning mx-2"></i>{" "}
                   <strong>Carbs : </strong> {fd.macros.carbs}
                 </p>
                 <p>
-                  <i class="fa-solid fa-bowl-food text-warning mx-2"></i>{" "}
+                  <i className="fa-solid fa-bowl-food text-warning mx-2"></i>{" "}
                   <strong>Fats : </strong> {fd.macros.fat}
                 </p>
               </div>
@@ -124,21 +130,21 @@ const fetchDetaisl =async()=>{
         ))}
       </div>
       <div
-        class="modal fade"
+        className="modal fade"
         id="deleteDietModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Are you really want to delete the diet?
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 ref={Ref}
@@ -146,17 +152,17 @@ const fetchDetaisl =async()=>{
               ></button>
             </div>
 
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
               <button
                 type="button"
-                class="btn btn-danger"
+                className="btn btn-danger"
                 onClick={handleDelete}
               >
                 Delete

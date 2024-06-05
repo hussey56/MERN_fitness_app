@@ -30,6 +30,8 @@ const Login = ({isAuth}) => {
         _id: response.data.user._id,
         email: response.data.user.email,
         username: response.data.user.username,
+        profileImage:response.data.user.profileImage,
+        fullname:response.data.user.fullname,
         auth: response.data.auth,
       };
       dispatch(setUser(user));

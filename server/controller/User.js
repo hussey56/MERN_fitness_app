@@ -8,7 +8,13 @@ const RefreshToken = require("../model/token");
 const JWTService = require("../services/JWTservice");
 const passwordPattern = /^(?=.*[a-z])(?=.*\d)[a-zA-Z\d]{8,25}/;
 const MongoDbPattern = /^[0-9a-fA-F]{24}$/;
-
+const {CLOUD_NAME,API_KEY,Api_SECRET} = require('../config/config')
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({ 
+    cloud_name: CLOUD_NAME, 
+    api_key: API_KEY, 
+    api_secret: Api_SECRET
+  });
 const calculatePercentage = (num1, num2) => {
   if (num1 == 0) {
     return 0;
@@ -83,6 +89,64 @@ const UserController = {
     } catch (error) {
       return next(error);
     }
+  },
+  async updateUser(req,res,next){
+
+    const { fullname, email, profilePhoto} = req.body;
+    let user;
+    try {
+      user = await User.findOne({email:email});
+      if(!user){
+        return res.status(404).send("User not Found")
+      }     
+        user.name = fullname;
+        user.email = email;
+      if(profilePhoto != ''){
+let response;
+try{
+  response = await cloudinary.uploader.upload(profilePhoto);
+}catch(e){
+  return next(error);  
+}
+user.profileImage = response.url;
+      }
+      await user.save();
+      const userDto = new UserDTO(user);
+      return res.status(200).json({user:userDto,auth: true});
+    } catch (error) {
+      return next(error)
+    }
+  },
+  async updateUserPassword(req,res,next){
+    const userRegisterSchema = Joi.object({
+      newpassword: Joi.string().pattern(passwordPattern).required(),
+      oldpassword: Joi.string().min(5).required(),
+userId:Joi.string().regex(MongoDbPattern).required()
+    });
+    const { error } = userRegisterSchema.validate(req.body);
+    if (error) {
+      return next(error);
+    }
+    const { oldpassword,newpassword,userId} = req.body;
+    let user;
+    try{
+user = await User.findById(userId);
+if(!user){
+return res.status(404).send("User Not Found");
+}
+const match = await bcrypt.compare(oldpassword, user.password);
+if (!match) {
+  return res.status(201).send("Incorrect old password");
+}
+const hashpassword = await bcrypt.hash(newpassword, 10);
+user.password = hashpassword;
+await user.save();
+return res.status(200).json(user);
+
+    }catch(e){
+      return next(e);
+    }
+  
   },
   async login(req, res, next) {
     const userLoginSchema = Joi.object({

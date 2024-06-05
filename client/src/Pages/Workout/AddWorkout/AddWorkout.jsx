@@ -97,19 +97,22 @@ const AddWorkout = () => {
         notes: "",
       });
       
-      dispatch(switchAlert(true));
-      MyAlert({type:"success",message:{title:"Congrats",text:"Workout created successfully!"
-      }})
+      // dispatch(switchAlert(true));
+      // MyAlert({type:"success",message:{title:"Congrats",text:"Workout created successfully!"
+      // }})
+      alert("Congrats ! Workout created successfully!!!")
       }else{
-        dispatch(switchAlert(true));
-        MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
-        }})
+        // dispatch(switchAlert(true));
+        // MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
+        // }})
+        alert("Oh ! Workout not created successfully!!!")
+
       }
      
     } catch (error) {
-      dispatch(switchAlert(true));
-      MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
-      }})
+      // dispatch(switchAlert(true));
+      // MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout creation."
+      // }})
       console.error('Error creating workout:', error);
     }
     setLoading(false);

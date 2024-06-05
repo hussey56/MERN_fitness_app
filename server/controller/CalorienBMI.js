@@ -248,7 +248,7 @@ const StatController = {
     try {
       data = await BMI.find({ userId: userId })
         .limit(day)
-        .sort({ datetime: -1 });
+        .sort({ datetime: 1 });
       if (data != null) {
         for (const b of data) {
           labels.push(formatDateTime(b.datetime));

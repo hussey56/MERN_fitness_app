@@ -37,18 +37,27 @@ const fetchDetaisl =async()=>{
         userId:data.userId,
         deleteId:data._id
     }
-    const response = await deleteworkout(cdata);
-    if(response.status == 200){
+try{
+  const response = await deleteworkout(cdata);
+  if(response.status == 200){
+// dispatch(switchAlert(true));
+// MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successfully!"
+// }})
+alert("Congrats! Workout deleted successfully!")
 ModelRef.current.click();
-dispatch(switchAlert(true));
-MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successfully!"
-}})
-        header('/workouts')
-    }else{
-        dispatch(switchAlert(true));
-        MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout deletion."
-        }})
-    }
+      header('/workouts')
+
+  }else{
+      // dispatch(switchAlert(true));
+      // MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the workout deletion."
+      // }})
+      console.log("something went wrong Workout deleted ")
+  }
+}catch(e){
+  console.log(e)
+}
+
+    
     setLoading(false)
    }
    useEffect(()=>{
@@ -64,7 +73,7 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
     <div className='container'>
         <Notifier/>
         <div className="singleworkout">
-        <span><i class="fa-solid fa-dumbbell"></i>  {data.category}</span>
+        <span><i className="fa-solid fa-dumbbell"></i>  {data.category}</span>
 
         </div>
         <div className="swcontainer mt-2 mb-1">
@@ -82,10 +91,10 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
                 {ex.exerciseName}
             </div>
             <div className="swcard-body">
-                <p><i class="text-danger fa-solid fa-weight-hanging mx-2"></i> <strong>Weight: </strong> {ex.weight} Kg</p>
-                <p><i class="text-dark fa-solid fa-arrow-down-1-9 mx-2"></i>  <strong>Reps: </strong> {ex.reps}</p>
-                <p><i class="text-danger fa-solid fa-clone mx-2"></i>  <strong>Sets: </strong> {ex.sets}</p>
-               {ex.notes.length >= 1 && <> <p><i class="text-warning fa-solid fa-note-sticky mx-2"></i> <strong>Notes : </strong></p>
+                <p><i className="text-danger fa-solid fa-weight-hanging mx-2"></i> <strong>Weight: </strong> {ex.weight} Kg</p>
+                <p><i className="text-dark fa-solid fa-arrow-down-1-9 mx-2"></i>  <strong>Reps: </strong> {ex.reps}</p>
+                <p><i className="text-danger fa-solid fa-clone mx-2"></i>  <strong>Sets: </strong> {ex.sets}</p>
+               {ex.notes.length >= 1 && <> <p><i className="text-warning fa-solid fa-note-sticky mx-2"></i> <strong>Notes : </strong></p>
                 <ReadMore maxLength={38} text={ex.notes} /></>}
             </div>
         </div>
@@ -98,17 +107,17 @@ MyAlert({type:"success",message:{title:"Congrats",text:"Workout deleted successf
                 <span className='btn btn-lg btn-outline-primary mx-1'>#{tag}</span>
             ))}
         </div>
-        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Are you really want to delete the workout?</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Are you really want to delete the workout?</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" ref={ModelRef} data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" onClick={handleDelete}>Delete</button>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" ref={ModelRef} data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+
+#profilename {
+	margin: 10px 0;
+}
+
+#profilesub {
+	margin: 5px 0;
+	text-transform: uppercase;
+}
+
+#profilep {
+	font-size: 14px;
+	line-height: 21px;
+}
+.profilecenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-container {
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.49);
+	padding-top: 10px;
+	position: relative;
+	width: 350px;
+	max-width: 100%;
+	text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.568);
+    padding-bottom: 20px;
+}
+
+
+
+.card-container .round {
+	border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.skills {
+	background-color: rgba(0, 94, 255, 0.799);
+	text-align: left;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.skills ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skills ul li {
+	border: 1px solid #2D2747;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 7px 7px 0;
+	padding: 7px;
+}

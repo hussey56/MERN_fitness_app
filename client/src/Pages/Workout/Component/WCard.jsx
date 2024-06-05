@@ -10,16 +10,16 @@ const WCard = ({workout}) => {
   return (
     <>
  
- <div class="col-md-4 col-xs-12">
-<div class="dcard my-2 mx-2">
+ <div className="col-md-4 col-xs-12">
+<div className="dcard my-2 mx-2">
   
-  <span class="description"><i class="fa-solid fa-dumbbell"></i>  {workout.category}</span>
-  <h3 class="blog-title mt-1">{workout.name}</h3>
-<p className="ex-title"><i class="fa-solid fa-person-running"></i> Exercises: <strong>
+  <span className="description"><i className="fa-solid fa-dumbbell"></i>  {workout.category}</span>
+  <h3 className="blog-title mt-1">{workout.name}</h3>
+<p className="ex-title"><i className="fa-solid fa-person-running"></i> Exercises: <strong>
 ({workout.exercises.length})  </strong></p>
   <div className="tags">
 {workout.tags.map((tag)=>(
-  <button class="ctn">#{tag}</button>
+  <button className="ctn">#{tag}</button>
 ))}
   </div>
 <div className="fluid-container">

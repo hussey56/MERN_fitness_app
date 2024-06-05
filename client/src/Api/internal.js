@@ -16,6 +16,24 @@ export const getworkouts = async(userId)=>{
     }
     return response;
 }
+export const updateuser = async(data)=>{
+    let response ;
+    try {
+        response = await api.post(`/updateprofile`,data);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+export const updateuserpassword = async(data)=>{
+    let response ;
+    try {
+        response = await api.post(`/updatepassword`,data);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const getalerts = async(userId)=>{
     let response ;
     try {

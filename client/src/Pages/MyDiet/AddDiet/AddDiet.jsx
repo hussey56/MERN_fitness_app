@@ -62,13 +62,15 @@ values.protein= 1;
 values.carbs= 1;
 values.fat= 1;
 
-      dispatch(switchAlert(true));
-      MyAlert({type:"success",message:{title:"Congrats",text:"Diet created successfully!"
-      }})
+      // dispatch(switchAlert(true));
+      // MyAlert({type:"success",message:{title:"Congrats",text:"Diet created successfully!"
+      // }})
+      alert("Congrats ! Diet Created Sucessfully!!!");
     }else{
-      dispatch(switchAlert(true));
-      MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the diet creation."
-      }})
+alert("Diet Not Created Due to Server Problem")
+      // dispatch(switchAlert(true));
+      // MyAlert({type:"error",message:{title:"Snaps!",text:"Error Occured in the diet creation."
+      // }})
     }
     setLoading(false)
 

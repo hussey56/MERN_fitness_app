@@ -16,6 +16,7 @@ import SingleWorkout from "./Pages/SingleWorkout/SingleWorkout";
 import SingleDiet from "./Pages/SingleDiet/SingleDiet";
 import Alerts from "./Pages/Alerts/Alerts";
 import Progress from "./Pages/Progress/Progress";
+import Profile from "./Pages/Profile/Profile";
 function App() {
 
   const isAuth = useSelector((state) => state.user.auth);
@@ -105,6 +106,15 @@ function App() {
             element={
               <Layout isAuth={isAuth}>
                 <Progress/>
+              </Layout>
+            }
+          />
+          <Route
+            path="/profile"
+            exact
+            element={
+              <Layout isAuth={isAuth}>
+              <Profile/>
               </Layout>
             }
           />

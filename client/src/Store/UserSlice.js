@@ -5,6 +5,7 @@ const initialState = {
   email: "",
   username: "",
   fullname: "",
+  profileImage:"",
   auth: false,
   alerts:[],
   num:0
@@ -15,11 +16,12 @@ export const UserSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      const { _id, email, username, auth, fullname } = action.payload;
+      const { _id, email, username, auth, fullname,profileImage } = action.payload;
       state._id = _id;
       state.email = email;
       state.username = username;
       state.fullname = fullname;
+      state.profileImage = profileImage;
       state.auth = auth;
     },
     resetUser: (state, action) => {
@@ -27,6 +29,7 @@ export const UserSlice = createSlice({
       state.email = "";
       state.username = "";
       state.fullname = "";
+      state.profileImage = "";
       state.auth = false;
     },
     setAlerts:(state,action)=>{

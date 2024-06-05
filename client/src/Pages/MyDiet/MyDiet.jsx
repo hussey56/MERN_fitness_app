@@ -53,7 +53,7 @@ dispatch(setDiet(response.data.diets))
         {diets.length === 0 && <h2 className='text-center'>No Diet Found</h2>}
       <div className="col-md-4 col-12 my-2">
         <div className='empty-diet-card'>
-        <i class="text-warning fa-solid fa-circle-plus" onClick={gotoAddDiet}></i>
+        <i className="text-warning fa-solid fa-circle-plus" onClick={gotoAddDiet}></i>
 
 <p className='text-center'>Add Diet</p>
 </div>

@@ -19,10 +19,12 @@ const newAlerts = user.alerts.filter((alert)=>(alert.view == false));
     header("/");
   };
   const dispatch = useDispatch();
-
+  
   const Logout = async () => {
-    await signout();
-    dispatch(resetUser());
+    // await signout();
+    // dispatch(resetUser());
+    header("/profile");
+
   };
 
   return (

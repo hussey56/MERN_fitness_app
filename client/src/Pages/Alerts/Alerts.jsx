@@ -64,7 +64,7 @@ const Alerts = () => {
                 return (
                   <div className="alert-tile">
                     <div className="icon-container bg-diet">
-                      <i class="text-warning fa-solid fa-utensils "></i>
+                      <i className="text-warning fa-solid fa-utensils "></i>
                     </div>
                     <div className="alert-text">
                       <span id="alert-time">{timeFormatter(alert.time)}</span>
@@ -79,7 +79,7 @@ const Alerts = () => {
                 return (
                   <div className="alert-tile">
                     <div className="icon-container bg-workout">
-                      <i class="text-info fa-solid fa-dumbbell"></i>
+                      <i className="text-info fa-solid fa-dumbbell"></i>
                     </div>
                     <div className="alert-text">
                       <span id="alert-time">{timeFormatter(alert.time)}</span>

@@ -49,7 +49,7 @@ const Workout = () => {
             )}
             <div className="col-md-4">
               <div className="addcard" onClick={gotoaddworkout}>
-                <i class="text-primary fa-solid fa-circle-plus"></i>
+                <i className="text-primary fa-solid fa-circle-plus"></i>
 
                 <p className="text-center">Add Workout</p>
               </div>
