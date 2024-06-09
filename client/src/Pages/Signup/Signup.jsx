@@ -53,8 +53,8 @@ const [loading,setLoading] =useState(false);
       fullname: "",
       username: "",
       email: "",
-      password: "Password123",
-      confirmPassword: "Password123",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema: SignupSchema,
   });

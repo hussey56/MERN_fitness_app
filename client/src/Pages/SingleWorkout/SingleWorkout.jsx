@@ -26,7 +26,7 @@ const fetchDetaisl =async()=>{
   if(reponse.status == 200){
     setData(reponse.data.data);
   }else{
-    setData(reponse.data.data)
+    header("/workouts");
   }
   setLoading(false);
 }
@@ -64,7 +64,7 @@ ModelRef.current.click();
     fetchDetaisl();
    },[])
    if (!data) {
-    return <></>;
+    return <>No Data Found</>;
 }
    if(loading){
     return <Loader text={lText}/>

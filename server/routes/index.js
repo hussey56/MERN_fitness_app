@@ -37,6 +37,8 @@ Router.post("/createworkout", auth, WorkoutController.createWorkout);
 
 // Users created workouts read
 Router.get("/userworkouts/:userId", auth, WorkoutController.userWorkouts);
+// user data for profile
+Router.get("/userdata/:userId", auth, UserController.userData);
 
 // uSER dIET pROGRESS
 Router.get(

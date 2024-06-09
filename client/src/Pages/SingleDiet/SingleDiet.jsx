@@ -22,7 +22,7 @@ const fetchDetaisl =async()=>{
   if(reponse.status == 200){
     setData(reponse.data.data);
   }else{
-    setData(reponse.data.data)
+    header("/mydiet");
   }
   setLoading(false);
 }

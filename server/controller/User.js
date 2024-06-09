@@ -346,11 +346,15 @@ return res.status(200).json(user);
     }
     const { userId } = req.params;
     try {
-      const user = await User.findOne({ _id: userId });
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).send("User not found");
       }
-      const alerts = user.notifications;
+      const alerts = user.notifications.sort((message1, message2) => {
+        const time1 = parseInt(message1.time, 10);
+        const time2 = parseInt(message2.time, 10);
+        return time2 - time1;
+      });
       return res.status(200).json(alerts);
     } catch (error) {
       return next(error);
@@ -575,6 +579,28 @@ return res.status(200).json(user);
 
       const data = [Cardio,Strength,Flexibility,Circuit,BodyWeight];
       return res.status(200).json(data);
+    } catch (error) {
+      return next(error);
+    }
+  },
+  async userData(req, res, next) {
+    const userFindingSchema = Joi.object({
+      userId: Joi.string().regex(MongoDbPattern).required(),
+    });
+    const { error } = userFindingSchema.validate(req.params);
+    if (error) {
+      return next(error);
+    }
+    const { userId } = req.params;
+    try {
+      const user = await User.findOne({ _id: userId });
+      if (!user) {
+        return res.status(404).send("User not found");
+      }
+const diets = user.diets;
+     
+const workouts =user.workouts;
+      return res.status(200).json({ diets,workouts });
     } catch (error) {
       return next(error);
     }

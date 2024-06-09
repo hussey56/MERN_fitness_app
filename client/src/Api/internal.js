@@ -34,6 +34,15 @@ export const updateuserpassword = async(data)=>{
     }
     return response;
 }
+export const userdata = async(userId)=>{
+    let response ;
+    try {
+        response = await api.get(`/userdata/${userId}`);
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
 export const getalerts = async(userId)=>{
     let response ;
     try {
